@@ -11,7 +11,6 @@
 		66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5521E781E7006A88AA /* LaunchScreen.storyboard */; };
 		66982C6621E78565006A88AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C5F21E78564006A88AA /* GameScene.swift */; };
 		66982C6721E78565006A88AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C6021E78564006A88AA /* GameViewController.swift */; };
-		66982C6821E78565006A88AA /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66982C6121E78564006A88AA /* MyScene.sks */; };
 		66982C6921E78565006A88AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66982C6221E78564006A88AA /* GameScene.sks */; };
 		66982C6A21E78565006A88AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C6321E78564006A88AA /* AppDelegate.swift */; };
 		66982C6B21E78565006A88AA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66982C6421E78565006A88AA /* Actions.sks */; };
@@ -28,7 +27,6 @@
 		66982C5E21E78564006A88AA /* Exiled-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Exiled-Bridging-Header.h"; sourceTree = "<group>"; };
 		66982C5F21E78564006A88AA /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		66982C6021E78564006A88AA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		66982C6121E78564006A88AA /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		66982C6221E78564006A88AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		66982C6321E78564006A88AA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66982C6421E78565006A88AA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -67,21 +65,60 @@
 		66982C4521E781E5006A88AA /* Exiled */ = {
 			isa = PBXGroup;
 			children = (
-				66982C7121E7864E006A88AA /* CustomScrollVIew.swift */,
+				66982C7521E787D2006A88AA /* Controller */,
+				66982C7421E787C7006A88AA /* View */,
+				66982C7321E787B2006A88AA /* Model */,
 				66982C6421E78565006A88AA /* Actions.sks */,
 				66982C6321E78564006A88AA /* AppDelegate.swift */,
-				66982C6221E78564006A88AA /* GameScene.sks */,
-				66982C5F21E78564006A88AA /* GameScene.swift */,
-				66982C6021E78564006A88AA /* GameViewController.swift */,
-				66982C6521E78565006A88AA /* Main.storyboard */,
-				66982C6121E78564006A88AA /* MyScene.sks */,
-				66982C6D21E78580006A88AA /* MyTileSet.sks */,
 				66982C5321E781E7006A88AA /* Assets.xcassets */,
-				66982C5521E781E7006A88AA /* LaunchScreen.storyboard */,
 				66982C5821E781E7006A88AA /* Info.plist */,
 				66982C5E21E78564006A88AA /* Exiled-Bridging-Header.h */,
 			);
 			path = Exiled;
+			sourceTree = "<group>";
+		};
+		66982C7321E787B2006A88AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66982C7421E787C7006A88AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66982C7721E787F1006A88AA /* Util */,
+				66982C7621E787E7006A88AA /* Views */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66982C7521E787D2006A88AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66982C6021E78564006A88AA /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		66982C7621E787E7006A88AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66982C5521E781E7006A88AA /* LaunchScreen.storyboard */,
+				66982C6521E78565006A88AA /* Main.storyboard */,
+				66982C6221E78564006A88AA /* GameScene.sks */,
+				66982C5F21E78564006A88AA /* GameScene.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66982C7721E787F1006A88AA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				66982C7121E7864E006A88AA /* CustomScrollVIew.swift */,
+				66982C6D21E78580006A88AA /* MyTileSet.sks */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +182,6 @@
 			files = (
 				66982C6921E78565006A88AA /* GameScene.sks in Resources */,
 				66982C5421E781E7006A88AA /* Assets.xcassets in Resources */,
-				66982C6821E78565006A88AA /* MyScene.sks in Resources */,
 				66982C6E21E78580006A88AA /* MyTileSet.sks in Resources */,
 				66982C6C21E78565006A88AA /* Main.storyboard in Resources */,
 				66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */,
