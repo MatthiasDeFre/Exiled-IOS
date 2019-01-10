@@ -42,7 +42,7 @@ class GameViewController: UIViewController {
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFill
                 
-                sceneNode.setClickCallback(test: labelUpdate)
+                sceneNode.setClickCallback(test: selectTile)
                 
                 // Present the scene
                 if let view = mapView  {
@@ -78,9 +78,11 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    func labelUpdate(){
-        counter += 1
-        score.text = String(counter)
+    func selectTile(rowIndex : Int, colIndex : Int){
+        updateSelectedInfo(tile: game.mapSet.selectTile(from: (rowIndex, colIndex)))
+    }
+    func updateSelectedInfo(tile : Tile) {
+        score.text = tile.description
     }
 }
 extension UIView {

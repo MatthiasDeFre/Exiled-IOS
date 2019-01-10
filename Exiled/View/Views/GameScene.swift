@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var clickCall : (() -> ())!
+    var clickCall : ((Int, Int) -> ())!
     var scrollView: SwiftySKScrollView!
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -81,7 +81,7 @@ class GameScene: SKScene {
             map.setTileGroup(map.tileSet.tileGroups.last, forColumn: column, row: row)
             print(column, " r", row)
             centerNode?.run(SKAction.move(to: location, duration: 1))
-            clickCall()
+            clickCall(row, column)
         }
     }
     @IBAction func handleTapFrom(recognizer: UITapGestureRecognizer) {
@@ -118,16 +118,14 @@ class GameScene: SKScene {
         }
         self.lastUpdateTime = currentTime
     }
-    typealias test = (_ : String) -> Void
-    func test(callback : test) {
-        callback("test")
-    }
+    typealias test = (_ : Int, _ colIndex : Int) -> Void
+   
     func rotate(){
         self.camera?.setScale(2)
        // testLabel.position = CGPoint(x: -screenWidth, y: screenHeight)
         
     }
-    func setClickCallback(test : @escaping () -> ()) {
+    func setClickCallback(test : @escaping test) {
         clickCall = test
     }
     
