@@ -7,10 +7,10 @@
 //
 
 import Foundation
-enum TileType {
-    case water
-    case land
-    case lumberyard
-    case mine
-    case mint
+enum TileType : String {
+    case water = "Water"
+    case land = "Land"
+    case lumberyard = "LumberYard"
+    case mine = "Mine"
+    case mint = "Mint"
 }

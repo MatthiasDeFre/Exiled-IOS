@@ -19,4 +19,8 @@ struct TileDictionary {
             52 : Building(description: "Mint", is: TileType.mint, gives: 50, of: ResourceType.gold),
         ]
     }
+    
+    func getTileType(type : Int) -> String{
+        return tileDictionary[type]!.tileType.rawValue
+    }
 }

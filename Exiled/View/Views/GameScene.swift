@@ -143,8 +143,8 @@ class GameScene: SKScene {
     
         for (rowIndex, tileRow) in tiles.enumerated() {
             print("Row ",rowIndex)
-            for (colIndex, tileCol) in tileRow.enumerated() {
-                map.setTileGroup(map.tileSet.tileGroups.last, forColumn: colIndex, row: rowIndex)
+            for (colIndex, tile) in tileRow.enumerated() {
+                map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == TileDictionary.instance.getTileType(type: tile)}), forColumn: colIndex, row: rowIndex)
                  print("Col ",colIndex)
             }
           
