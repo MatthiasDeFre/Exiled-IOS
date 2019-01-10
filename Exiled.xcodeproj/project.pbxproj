@@ -17,6 +17,8 @@
 		66982C6C21E78565006A88AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C6521E78565006A88AA /* Main.storyboard */; };
 		66982C6E21E78580006A88AA /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66982C6D21E78580006A88AA /* MyTileSet.sks */; };
 		66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7121E7864E006A88AA /* CustomScrollVIew.swift */; };
+		66982C7921E789D6006A88AA /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7821E789D6006A88AA /* Building.swift */; };
+		66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7A21E78B86006A88AA /* ResourceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		66982C6521E78565006A88AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66982C6D21E78580006A88AA /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		66982C7121E7864E006A88AA /* CustomScrollVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScrollVIew.swift; sourceTree = "<group>"; };
+		66982C7821E789D6006A88AA /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		66982C7A21E78B86006A88AA /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 		66982C7321E787B2006A88AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				66982C7821E789D6006A88AA /* Building.swift */,
+				66982C7A21E78B86006A88AA /* ResourceType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,8 +204,10 @@
 			files = (
 				66982C6A21E78565006A88AA /* AppDelegate.swift in Sources */,
 				66982C6721E78565006A88AA /* GameViewController.swift in Sources */,
+				66982C7921E789D6006A88AA /* Building.swift in Sources */,
 				66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */,
 				66982C6621E78565006A88AA /* GameScene.swift in Sources */,
+				66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
