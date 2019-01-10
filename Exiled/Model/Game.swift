@@ -8,5 +8,5 @@
 
 import Foundation
 struct Game {
-    var mapSet : MapSet
+    var mapSet : MapSet = MapSet()
 }

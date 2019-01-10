@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var game : Game!
+    
     var gScene : GameScene!
     var counter = 0
     
@@ -20,6 +22,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mapView: SKView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        game = Game()
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -49,6 +52,7 @@ class GameViewController: UIViewController {
                     
                     view.showsFPS = true
                     view.showsNodeCount = true
+                    gScene.setMap(tiles: game.mapSet.map)
                     
                 }
                

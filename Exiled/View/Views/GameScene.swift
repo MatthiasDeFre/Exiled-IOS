@@ -130,4 +130,24 @@ class GameScene: SKScene {
     func setClickCallback(test : @escaping () -> ()) {
         clickCall = test
     }
+    
+    func setMap(tiles : [[Int]]) {
+        guard var map = childNode(withName: "testB") as? SKTileMapNode else {
+            fatalError("Background node not loaded")
+        }
+        map.removeFromParent()
+        map = SKTileMapNode(tileSet: map.tileSet, columns: tiles[0].count, rows: tiles.count, tileSize: CGSize(width: 110, height: 128))
+        map.name = "testB"
+        
+        self.addChild(map)
+    
+        for (rowIndex, tileRow) in tiles.enumerated() {
+            print("Row ",rowIndex)
+            for (colIndex, tileCol) in tileRow.enumerated() {
+                map.setTileGroup(map.tileSet.tileGroups.last, forColumn: colIndex, row: rowIndex)
+                 print("Col ",colIndex)
+            }
+          
+        }
+    }
 }
