@@ -19,7 +19,7 @@
 		66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7121E7864E006A88AA /* CustomScrollVIew.swift */; };
 		66982C7921E789D6006A88AA /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7821E789D6006A88AA /* Building.swift */; };
 		66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7A21E78B86006A88AA /* ResourceType.swift */; };
-		66982C7D21E78C19006A88AA /* BuildingDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7C21E78C19006A88AA /* BuildingDictionary.swift */; };
+		66982C7D21E78C19006A88AA /* TileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7C21E78C19006A88AA /* TileDictionary.swift */; };
 		66982C7F21E78EFA006A88AA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C7E21E78EFA006A88AA /* Game.swift */; };
 		66982C8121E78F30006A88AA /* MapSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8021E78F30006A88AA /* MapSet.swift */; };
 		66982C8321E78F69006A88AA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8221E78F69006A88AA /* Event.swift */; };
@@ -44,7 +44,7 @@
 		66982C7121E7864E006A88AA /* CustomScrollVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScrollVIew.swift; sourceTree = "<group>"; };
 		66982C7821E789D6006A88AA /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		66982C7A21E78B86006A88AA /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
-		66982C7C21E78C19006A88AA /* BuildingDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDictionary.swift; sourceTree = "<group>"; };
+		66982C7C21E78C19006A88AA /* TileDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDictionary.swift; sourceTree = "<group>"; };
 		66982C7E21E78EFA006A88AA /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		66982C8021E78F30006A88AA /* MapSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSet.swift; sourceTree = "<group>"; };
 		66982C8221E78F69006A88AA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			children = (
 				66982C7821E789D6006A88AA /* Building.swift */,
 				66982C7A21E78B86006A88AA /* ResourceType.swift */,
-				66982C7C21E78C19006A88AA /* BuildingDictionary.swift */,
+				66982C7C21E78C19006A88AA /* TileDictionary.swift */,
 				66982C7E21E78EFA006A88AA /* Game.swift */,
 				66982C8021E78F30006A88AA /* MapSet.swift */,
 				66982C8221E78F69006A88AA /* Event.swift */,
@@ -228,7 +228,7 @@
 				66982C7921E789D6006A88AA /* Building.swift in Sources */,
 				66982C8721E7929B006A88AA /* Tile.swift in Sources */,
 				66982C8521E78FA5006A88AA /* EventType.swift in Sources */,
-				66982C7D21E78C19006A88AA /* BuildingDictionary.swift in Sources */,
+				66982C7D21E78C19006A88AA /* TileDictionary.swift in Sources */,
 				66982C8321E78F69006A88AA /* Event.swift in Sources */,
 				66982C8921E7942F006A88AA /* TileType.swift in Sources */,
 				66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */,

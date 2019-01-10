@@ -11,10 +11,12 @@ import Foundation
 class Building : Tile {
     var resourceType : ResourceType
     var value : Int
+ 
     init(description: String, is tileType : TileType, gives amount: Int, of resource : ResourceType ) {
-        self.description = description
-        self.tileType = tileType
         resourceType = resource
         value = amount
+        
+        super.init(description: description, is: tileType)
+        building = true
     }
 }

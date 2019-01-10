@@ -25,7 +25,8 @@ class MapSet {
     
     func selectTile(from coordinates : (Int, Int)) -> Tile {
         selectedTile = coordinates
+    
         //Return tile info
-        return
+        return TileDictionary.instance.tileDictionary[map[coordinates.0][coordinates.1]]!
     }
 }

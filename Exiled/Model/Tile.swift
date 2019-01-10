@@ -10,6 +10,7 @@ import Foundation
 class Tile {
     var description : String
     var tileType : TileType
+    internal var building = false
     init(description : String, is tileType : TileType) {
         self.description = description
         self.tileType = tileType
