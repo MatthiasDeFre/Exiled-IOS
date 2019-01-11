@@ -13,7 +13,16 @@ class MapSet {
     var possibleEvents = [Event]()
     var discoveredEvents = [Int : Event]()
     var tileDictionary = TileDictionary.instance.tileDictionary
-    private var selectedTile : (Int, Int)?
+    private var selectedTile : (Int, Int)!
+    var selectedTileUpgrade : Tile? {
+        get {
+            if let upgrade = tileDictionary[map[selectedTile.0][selectedTile.1]]!.upgrade {
+                return tileDictionary[upgrade]
+            }
+            return nil
+        }
+    }
+    
     init() {
         map =
             [[.water,.land,.land,.land,.land,.land],

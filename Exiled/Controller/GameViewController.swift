@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     var counter = 0
     
    
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnUpgrade: UIButton!
     @IBOutlet weak var upgradeDescription: UILabel!
     @IBOutlet weak var score: UILabel!
@@ -46,7 +47,8 @@ class GameViewController: UIViewController {
                 sceneNode.scaleMode = .aspectFill
                 
                 sceneNode.setClickCallback(test: selectTile)
-                
+            
+                bottomView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
                 // Present the scene
                 if let view = mapView  {
                     view.presentScene(sceneNode)
@@ -82,17 +84,19 @@ class GameViewController: UIViewController {
         return true
     }
     func selectTile(rowIndex : Int, colIndex : Int){
-        updateSelectedInfo(tile: game.mapSet.selectTile(from: (rowIndex, colIndex)))
+        let tile = game.mapSet.selectTile(from: (rowIndex, colIndex))
+        let canUpgrade = game.canUpgrade()
+        updateSelectedInfo(tile: tile, isUpgradeable: canUpgrade)
     }
-    func updateSelectedInfo(tile : Tile) {
+    
+    func updateSelectedInfo(tile : Tile, isUpgradeable : Bool ) {
       
         if let upgrade = tile.upgrade {
             upgradeDescription.text = TileDictionary.instance.tileDictionary[upgrade]?.description
-            btnUpgrade.isEnabled = true
         } else {
             upgradeDescription.text = tile.description
-            btnUpgrade.isEnabled = false
         }
+        btnUpgrade.isEnabled = isUpgradeable
     }
     @IBAction func upgradePressed(_ sender: Any) {
         let upgradeInfo = game.upgradeSelectedBuilding()

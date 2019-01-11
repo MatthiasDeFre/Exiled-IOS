@@ -170,6 +170,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="4kZ-NO-HrV" id="XVc-mb-ZRU"/>
                         <outlet property="btnUpgrade" destination="HLq-IR-2Tn" id="zHj-B6-G0I"/>
                         <outlet property="heading" destination="vbX-N6-0KH" id="tEA-Iq-Vjs"/>
                         <outlet property="mapView" destination="qKw-hd-PcA" id="Lq1-wT-Hy4"/>

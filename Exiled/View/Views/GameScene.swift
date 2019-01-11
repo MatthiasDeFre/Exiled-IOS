@@ -18,6 +18,7 @@ class GameScene: SKScene {
     var cam : SKCameraNode?
     var centerNode : SKSpriteNode?
     var testLabel : SKLabelNode!
+    var selectionBox : SKShapeNode?
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -32,7 +33,7 @@ class GameScene: SKScene {
             label.alpha = 0.0
             label.run(SKAction.fadeIn(withDuration: 2.0))
         }
-        
+     
       
     }
     
@@ -77,6 +78,15 @@ class GameScene: SKScene {
             guard column >= 0, row >= 0, column < map.numberOfColumns, row < map.numberOfRows else{
                 return
             }
+            if let selectionBox = selectionBox {
+               selectionBox.removeFromParent()
+            }
+          
+            selectionBox = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+            selectionBox!.position = location
+            selectionBox!.strokeColor = .red
+            map.addChild(selectionBox!)
+            
             print(column, " r", row)
             centerNode?.run(SKAction.move(to: location, duration: 1))
             clickCall(row, column)
@@ -153,4 +163,6 @@ class GameScene: SKScene {
         }
         map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == tileType.rawValue}), forColumn: coordinates.1, row: coordinates.0)
     }
+    
 }
+
