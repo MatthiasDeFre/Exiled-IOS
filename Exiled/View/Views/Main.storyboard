@@ -12,7 +12,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="ScrollviewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Exiled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,25 +112,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kZ-NO-HrV" userLabel="Bottom">
                                 <rect key="frame" x="0.0" y="325" width="667" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-Ac-sfU">
-                                        <rect key="frame" x="20" y="10" width="282" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-Ac-sfU">
+                                        <rect key="frame" x="20" y="10" width="342" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-4O-kEW">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-4O-kEW">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGH-S0-3AU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGH-S0-3AU" userLabel="UpgradeDescription">
                                                 <rect key="frame" x="240" y="0.0" width="42" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLq-IR-2Tn">
+                                                <rect key="frame" x="282" y="0.0" width="60" height="30"/>
+                                                <state key="normal" title="Upgrade"/>
+                                                <connections>
+                                                    <action selector="upgradePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="16r-92-7o0"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="KGH-S0-3AU" firstAttribute="leading" secondItem="W1K-4O-kEW" secondAttribute="trailing" id="PSM-Fn-K8y"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdr-9c-4L5">
-                                        <rect key="frame" x="302" y="10" width="345" height="30"/>
+                                        <rect key="frame" x="583" y="10" width="64" height="30"/>
                                         <state key="normal" title="Next turn"/>
                                     </button>
                                 </subviews>
@@ -140,7 +147,6 @@
                                     <constraint firstItem="5kf-Ac-sfU" firstAttribute="top" secondItem="rh0-ec-e3e" secondAttribute="top" constant="10" id="6gJ-j3-v2O"/>
                                     <constraint firstAttribute="height" constant="50" id="7sw-jv-Xiz"/>
                                     <constraint firstItem="rh0-ec-e3e" firstAttribute="trailing" secondItem="vdr-9c-4L5" secondAttribute="trailing" constant="20" id="TXV-A7-Hgj"/>
-                                    <constraint firstItem="vdr-9c-4L5" firstAttribute="leading" secondItem="5kf-Ac-sfU" secondAttribute="trailing" id="Tfm-ue-o2W"/>
                                     <constraint firstItem="vdr-9c-4L5" firstAttribute="top" secondItem="rh0-ec-e3e" secondAttribute="top" constant="10" id="WeP-3S-obt"/>
                                     <constraint firstItem="rh0-ec-e3e" firstAttribute="bottom" secondItem="vdr-9c-4L5" secondAttribute="bottom" constant="10" id="eBm-hA-M1P"/>
                                     <constraint firstItem="5kf-Ac-sfU" firstAttribute="leading" secondItem="rh0-ec-e3e" secondAttribute="leading" constant="20" id="knC-zb-jKW"/>
@@ -164,9 +170,11 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="btnUpgrade" destination="HLq-IR-2Tn" id="zHj-B6-G0I"/>
                         <outlet property="heading" destination="vbX-N6-0KH" id="tEA-Iq-Vjs"/>
                         <outlet property="mapView" destination="qKw-hd-PcA" id="Lq1-wT-Hy4"/>
                         <outlet property="score" destination="x9Z-Rt-RCw" id="ytt-6P-6A5"/>
+                        <outlet property="upgradeDescription" destination="KGH-S0-3AU" id="50F-6c-iWY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

@@ -9,4 +9,8 @@
 import Foundation
 struct Game {
     var mapSet : MapSet = MapSet()
+    
+    func upgradeSelectedBuilding() -> ((Int, Int), TileType){
+        return mapSet.upgradeSelectedTile()
+    }
 }

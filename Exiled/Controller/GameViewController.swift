@@ -17,6 +17,9 @@ class GameViewController: UIViewController {
     var gScene : GameScene!
     var counter = 0
     
+   
+    @IBOutlet weak var btnUpgrade: UIButton!
+    @IBOutlet weak var upgradeDescription: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var heading: UIView!
     @IBOutlet weak var mapView: SKView!
@@ -82,7 +85,18 @@ class GameViewController: UIViewController {
         updateSelectedInfo(tile: game.mapSet.selectTile(from: (rowIndex, colIndex)))
     }
     func updateSelectedInfo(tile : Tile) {
-        score.text = tile.description
+      
+        if let upgrade = tile.upgrade {
+            upgradeDescription.text = TileDictionary.instance.tileDictionary[upgrade]?.description
+            btnUpgrade.isEnabled = true
+        } else {
+            upgradeDescription.text = tile.description
+            btnUpgrade.isEnabled = false
+        }
+    }
+    @IBAction func upgradePressed(_ sender: Any) {
+        let upgradeInfo = game.upgradeSelectedBuilding()
+        gScene.changeTile(coordinates: upgradeInfo.0, tileType: upgradeInfo.1)
     }
 }
 extension UIView {

@@ -77,8 +77,6 @@ class GameScene: SKScene {
             guard column >= 0, row >= 0, column < map.numberOfColumns, row < map.numberOfRows else{
                 return
             }
-            
-            map.setTileGroup(map.tileSet.tileGroups.last, forColumn: column, row: row)
             print(column, " r", row)
             centerNode?.run(SKAction.move(to: location, duration: 1))
             clickCall(row, column)
@@ -129,7 +127,7 @@ class GameScene: SKScene {
         clickCall = test
     }
     
-    func setMap(tiles : [[Int]]) {
+    func setMap(tiles : [[TileType]]) {
         guard var map = childNode(withName: "testB") as? SKTileMapNode else {
             fatalError("Background node not loaded")
         }
@@ -142,10 +140,17 @@ class GameScene: SKScene {
         for (rowIndex, tileRow) in tiles.enumerated() {
             print("Row ",rowIndex)
             for (colIndex, tile) in tileRow.enumerated() {
-                map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == TileDictionary.instance.getTileType(type: tile)}), forColumn: colIndex, row: rowIndex)
+            
+                map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == tile.rawValue}), forColumn: colIndex, row: rowIndex)
                  print("Col ",colIndex)
             }
           
         }
+    }
+    func changeTile(coordinates : (Int, Int), tileType : TileType) {
+        guard var map = childNode(withName: "testB") as? SKTileMapNode else {
+            fatalError("Background node not loaded")
+        }
+        map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == tileType.rawValue}), forColumn: coordinates.1, row: coordinates.0)
     }
 }
