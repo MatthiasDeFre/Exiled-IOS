@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class MapSet {
+class MapSet : Codable {
     var map : [[TileType]]
     var undiscoveredEvents = [Int : Event]()
     var possibleEvents = [Event]()
@@ -42,7 +42,7 @@ class MapSet {
                 
             }
                 print("wood",wood)
-            let resourceCollection = (wood, stone, gold)
+            let resourceCollection = ResourceCollection(wood: wood, stone: stone, gold: gold)
             return resourceCollection
         }
     }
@@ -50,13 +50,18 @@ class MapSet {
     private var selectedTile : (Int, Int)!
     var selectedTileUpgrade : Tile? {
         get {
+            guard let selectedTile = selectedTile else {
+                return nil
+            }
             if let upgrade = tileDictionary[map[selectedTile.0][selectedTile.1]]!.upgrade {
                 return tileDictionary[upgrade]
             }
             return nil
         }
     }
-    
+    private enum CodingKeys: String, CodingKey {
+        case map
+    }
     init() {
         map =
             [[.water,.land,.land,.land,.land,.land],
@@ -66,7 +71,7 @@ class MapSet {
              [.land,.land,.land,.land,.water,.water]
             ]
     }
-    
+   
     func selectTile(from coordinates : (Int, Int)) -> Tile {
         selectedTile = coordinates
         print(coordinates)

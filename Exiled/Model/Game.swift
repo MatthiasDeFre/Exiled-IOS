@@ -8,17 +8,21 @@
 
 import Foundation
 //Wood, Stone, Gold
-typealias ResourceCollection = (Int,Int,Int)
-class Game {
+
+class Game : Codable{
     var mapSet : MapSet = MapSet()
     var resources : ResourceCollection
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn
     }
-    
-    init() {
-        resources = (1000,1000,1000)
+    private enum CodingKeys: String, CodingKey {
+        case mapSet
+        case resources
     }
+    init() {
+        resources = ResourceCollection(wood: 1000,stone: 1000,gold: 1000)
+    }
+   
     func canUpgrade() -> Bool {
         let upgrade = mapSet.selectedTileUpgrade
         if let upgrade = upgrade {
@@ -39,11 +43,6 @@ class Game {
     
    
 }
-func + (left: (Int,Int,Int), right: (Int, Int,Int)) -> (ResourceCollection) {
-    return (left.0 + right.0, left.1+right.1, left.2 + right.2)
-}
-func - (left: (Int,Int,Int), right: (Int, Int,Int)) -> (ResourceCollection) {
-    return (left.0 - right.0, left.1-right.1, left.2 - right.2)
-}
+
 
 

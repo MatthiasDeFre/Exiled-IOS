@@ -31,7 +31,18 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mapView: SKView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        game = Game()
+        let documentsDirectory =
+            FileManager.default.urls(for: .documentDirectory,
+                                     in: .userDomainMask).first!
+        let archiveURL =
+            documentsDirectory.appendingPathComponent("savegame")
+                .appendingPathExtension("json")
+        if let loadedGameData = try? Data(contentsOf: archiveURL), let loadedGame = try? JSONDecoder().decode(Game.self, from: loadedGameData) {
+            game = loadedGame
+        } else {
+            game = Game()
+        }
+        
         updateResources()
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -111,9 +122,9 @@ class GameViewController: UIViewController {
     func updateResources() {
         let perTurn = game.resourcesPerTurn
         let current = game.resources
-        wood.text = "\(current.0)+\(perTurn.0)"
-          stone.text = "\(current.1)+\(perTurn.1)"
-          gold.text = "\(current.2)+\(perTurn.2)"
+        wood.text = "\(current.wood)+\(perTurn.wood)"
+          stone.text = "\(current.stone)+\(perTurn.stone)"
+          gold.text = "\(current.gold)+\(perTurn.gold)"
     }
     @IBAction func upgradePressed(_ sender: Any) {
         let upgradeInfo = game.upgradeSelectedBuilding()
@@ -125,6 +136,25 @@ class GameViewController: UIViewController {
         game.nextTurn()
         updateResources()
          btnUpgrade.isEnabled = game.canUpgrade()
+    }
+    
+    @IBAction func savePressed(_ sender: Any) {
+        let jsonEncoder = JSONEncoder()
+        do {
+        
+            let jsonData = try jsonEncoder.encode(game)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            print("JSON String : " + jsonString!)
+            let documentsDirectory =
+                FileManager.default.urls(for: .documentDirectory,
+                    in: .userDomainMask).first!
+            let archiveURL =
+                documentsDirectory.appendingPathComponent("savegame")
+                    .appendingPathExtension("json")
+            try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
+        }
+        catch {
+        }
     }
 }
 extension UIView {

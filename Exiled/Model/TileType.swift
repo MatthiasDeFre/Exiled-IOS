@@ -7,7 +7,7 @@
 //
 
 import Foundation
-enum TileType : String {
+enum TileType : String, Codable {
     case water = "Water"
     case land = "Land"
     case lumberyard = "Lumberyard"

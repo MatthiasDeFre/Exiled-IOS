@@ -204,6 +204,9 @@
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="savePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="nkV-jp-gYp"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
