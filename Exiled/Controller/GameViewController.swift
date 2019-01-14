@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     var counter = 0
     
    
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var gold: UILabel!
     @IBOutlet weak var stone: UILabel!
     @IBOutlet weak var wood: UILabel!
@@ -36,6 +37,7 @@ class GameViewController: UIViewController {
         // including entities and graphs.
         //heading.backgroundColor = UIColor(red: 9/255, green: 95/255, blue: 234/255, alpha: 0.5)
         let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.navigationController?.navigationBar.barTintColor = backgroundColor
         heading.backgroundColor = backgroundColor
            bottomView.backgroundColor = backgroundColor
         //heading.roundedCorners(top: false)
