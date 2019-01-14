@@ -18,6 +18,9 @@ class GameViewController: UIViewController {
     var counter = 0
     
    
+    @IBOutlet weak var gold: UILabel!
+    @IBOutlet weak var stone: UILabel!
+    @IBOutlet weak var wood: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnUpgrade: UIButton!
     @IBOutlet weak var upgradeDescription: UILabel!
@@ -27,7 +30,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         game = Game()
-        
+        updateResources()
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
         //heading.backgroundColor = UIColor(red: 9/255, green: 95/255, blue: 234/255, alpha: 0.5)
@@ -101,9 +104,18 @@ class GameViewController: UIViewController {
         }
         btnUpgrade.isEnabled = isUpgradeable
     }
+    
+    func updateResources() {
+        let perTurn = game.resourcesPerTurn
+        let current = game.resources
+        wood.text = "\(current.0)+\(perTurn.0)"
+          stone.text = "\(current.1)+\(perTurn.1)"
+          gold.text = "\(current.2)+\(perTurn.2)"
+    }
     @IBAction func upgradePressed(_ sender: Any) {
         let upgradeInfo = game.upgradeSelectedBuilding()
         gScene.changeTile(coordinates: upgradeInfo.0, tileType: upgradeInfo.1)
+        updateResources()
     }
 }
 extension UIView {

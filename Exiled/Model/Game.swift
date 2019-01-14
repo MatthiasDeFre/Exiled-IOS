@@ -12,6 +12,10 @@ typealias ResourceCollection = (Int,Int,Int)
 struct Game {
     var mapSet : MapSet = MapSet()
     var resources : ResourceCollection
+    var resourcesPerTurn : ResourceCollection {
+        return mapSet.resourcesPerTurn
+    }
+    
     init() {
         resources = (1000,1000,1000)
     }

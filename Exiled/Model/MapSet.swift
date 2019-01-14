@@ -13,6 +13,39 @@ class MapSet {
     var possibleEvents = [Event]()
     var discoveredEvents = [Int : Event]()
     var tileDictionary = TileDictionary.instance.tileDictionary
+    
+    var resourcesPerTurn : ResourceCollection {
+        get {
+           
+            var gold = 0
+            var wood = 0
+            var stone = 0
+           
+            for row in map {
+                for column in row {
+                    if let building = tileDictionary[column]
+                        as? Building {
+                        print(building.value)
+                        switch(building.resourceType) {
+                        case .gold:
+                                gold += building.value
+                                break;
+                        case .wood:
+                                wood += building.value
+                                break;
+                        case .stone:
+                                stone += building.value
+                                break;
+                        }
+                    }
+                }
+                
+            }
+            let resourceCollection = (wood, stone, gold)
+            return resourceCollection
+        }
+    }
+    
     private var selectedTile : (Int, Int)!
     var selectedTileUpgrade : Tile? {
         get {
