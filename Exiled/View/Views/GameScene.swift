@@ -83,7 +83,14 @@ class GameScene: SKScene {
             }
           
             selectionBox = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
-            selectionBox!.position = location
+            let rect = CGRect(x: 0.0, y: 0.0, width: 128, height: 128)
+            
+            selectionBox = SKShapeNode(path: roundedPolygonPath(rect: rect, lineWidth: 0, sides: 6, cornerRadius: 0, rotationOffset: CGFloat(Double.pi / 2.0)).cgPath)
+           var point =  map.centerOfTile(atColumn: column, row: row)
+            point.x = point.x - 55
+            point.y = point.y - 55
+            
+            selectionBox!.position = point
             selectionBox!.strokeColor = .red
             map.addChild(selectionBox!)
             
@@ -142,7 +149,7 @@ class GameScene: SKScene {
             fatalError("Background node not loaded")
         }
         map.removeFromParent()
-        map = SKTileMapNode(tileSet: map.tileSet, columns: tiles[0].count, rows: tiles.count, tileSize: CGSize(width: 110, height: 128))
+        map = SKTileMapNode(tileSet: map.tileSet, columns: tiles[0].count, rows: tiles.count, tileSize: CGSize(width: 128, height: 128))
         map.name = "testB"
         
         self.addChild(map)
@@ -165,4 +172,46 @@ class GameScene: SKScene {
     }
     
 }
+//SOURCE: https://gist.github.com/henrinormak/96c8918e7baa23d5b10a
+public func roundedPolygonPath(rect: CGRect, lineWidth: CGFloat, sides: NSInteger, cornerRadius: CGFloat, rotationOffset: CGFloat = 0) -> UIBezierPath {
+    let path = UIBezierPath()
+    let theta: CGFloat = CGFloat(2.0 * Double.pi) / CGFloat(sides) // How much to turn at every corner
+    let width = min(rect.size.width, rect.size.height)        // Width of the square
+    
+    let center = CGPoint(x: rect.origin.x + width / 2.0, y: rect.origin.y + width / 2.0)
+    
+    // Radius of the circle that encircles the polygon
+    // Notice that the radius is adjusted for the corners, that way the largest outer
+    // dimension of the resulting shape is always exactly the width - linewidth
+    let radius = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0
+    
+    // Start drawing at a point, which by default is at the right hand edge
+    // but can be offset
+    var angle = CGFloat(rotationOffset)
+    
+    let corner = CGPoint(x: center.x + (radius - cornerRadius) * cos(angle), y: center.y + (radius - cornerRadius) * sin(angle))
+    path.move(to: CGPoint(x: corner.x + cornerRadius * cos(angle + theta), y: corner.y + cornerRadius * sin(angle + theta)))
+    
+    for _ in 0..<sides {
+        angle += theta
+        
+        let corner = CGPoint(x: center.x + (radius - cornerRadius) * cos(angle), y: center.y + (radius - cornerRadius) * sin(angle))
+        let tip = CGPoint(x: center.x + radius * cos(angle), y: center.y + radius * sin(angle))
+        let start = CGPoint(x: corner.x + cornerRadius * cos(angle - theta), y: corner.y + cornerRadius * sin(angle - theta))
+        let end = CGPoint(x: corner.x + cornerRadius * cos(angle + theta), y: corner.y + cornerRadius * sin(angle + theta))
+        
+        path.addLine(to: start)
+        path.addQuadCurve(to: end, controlPoint: tip)
+    }
+    
+    path.close()
+    
+    // Move the path to the correct origins
+    let bounds = path.bounds
+    let transform = CGAffineTransform(translationX: -bounds.origin.x + rect.origin.x + lineWidth / 2.0, y: -bounds.origin.y + rect.origin.y + lineWidth / 2.0)
+    path.apply(transform)
+    
+    return path
+}
+
 

@@ -30,7 +30,10 @@ class GameViewController: UIViewController {
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        heading.backgroundColor = UIColor(red: 9/255, green: 95/255, blue: 234/255, alpha: 0.5)
+        //heading.backgroundColor = UIColor(red: 9/255, green: 95/255, blue: 234/255, alpha: 0.5)
+        let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        heading.backgroundColor = backgroundColor
+           bottomView.backgroundColor = backgroundColor
         //heading.roundedCorners(top: false)
       heading.layer.cornerRadius = 8
         //view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
