@@ -23,6 +23,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wood: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var btnUpgrade: UIButton!
+    
     @IBOutlet weak var upgradeDescription: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var heading: UIView!
@@ -116,6 +117,12 @@ class GameViewController: UIViewController {
         let upgradeInfo = game.upgradeSelectedBuilding()
         gScene.changeTile(coordinates: upgradeInfo.0, tileType: upgradeInfo.1)
         updateResources()
+        btnUpgrade.isEnabled = game.canUpgrade()
+    }
+    @IBAction func nextTurnPressed(_ sender: Any) {
+        game.nextTurn()
+        updateResources()
+         btnUpgrade.isEnabled = game.canUpgrade()
     }
 }
 extension UIView {

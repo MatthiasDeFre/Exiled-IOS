@@ -25,7 +25,7 @@ class MapSet {
                 for column in row {
                     if let building = tileDictionary[column]
                         as? Building {
-                        print(building.value)
+                    
                         switch(building.resourceType) {
                         case .gold:
                                 gold += building.value
@@ -41,6 +41,7 @@ class MapSet {
                 }
                 
             }
+                print("wood",wood)
             let resourceCollection = (wood, stone, gold)
             return resourceCollection
         }

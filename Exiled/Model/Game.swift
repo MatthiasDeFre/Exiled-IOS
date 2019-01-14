@@ -9,7 +9,7 @@
 import Foundation
 //Wood, Stone, Gold
 typealias ResourceCollection = (Int,Int,Int)
-struct Game {
+class Game {
     var mapSet : MapSet = MapSet()
     var resources : ResourceCollection
     var resourcesPerTurn : ResourceCollection {
@@ -28,12 +28,19 @@ struct Game {
         }
         return false
     }
-    mutating func upgradeSelectedBuilding() -> ((Int, Int), TileType){
+    func nextTurn() {
+        resources = resources + resourcesPerTurn
+        
+    }
+    func upgradeSelectedBuilding() -> ((Int, Int), TileType){
         self.resources = resources - (mapSet.selectedTileUpgrade! as! Building).resourceCost
         return mapSet.upgradeSelectedTile()
     }
     
    
+}
+func + (left: (Int,Int,Int), right: (Int, Int,Int)) -> (ResourceCollection) {
+    return (left.0 + right.0, left.1+right.1, left.2 + right.2)
 }
 func - (left: (Int,Int,Int), right: (Int, Int,Int)) -> (ResourceCollection) {
     return (left.0 - right.0, left.1-right.1, left.2 - right.2)
