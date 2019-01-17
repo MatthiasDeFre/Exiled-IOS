@@ -36,7 +36,9 @@ class SaveGameTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-   
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
@@ -61,17 +63,20 @@ class SaveGameTableViewController: UITableViewController {
                 FileManager.default.urls(for: .documentDirectory,
                                          in: .userDomainMask).first!
             let archiveURL =
-                documentsDirectory.appendingPathComponent("savegame")
+                documentsDirectory.appendingPathComponent(saveGames[tableView.indexPathForSelectedRow!.row])
                     .appendingPathExtension("json")
             if let loadedGameData = try? Data(contentsOf: archiveURL), let loadedGame = try? JSONDecoder().decode(Game.self, from: loadedGameData) {
                 game = loadedGame
             } else {
-                game = Game()
+                //Failsafe TODO kill prepare
+                game = Game(isCalled: "ErrorLoadingGame")
             }
             let gameViewController = segue.destination as! GameViewController
             gameViewController.game = game;
             break
-        
+        case "newGame":
+            
+            break
         default:
             fatalError("unknown segue")
         }

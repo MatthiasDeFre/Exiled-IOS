@@ -31,29 +31,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mapView: SKView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let documentsDirectory =
-            FileManager.default.urls(for: .documentDirectory,
-                                     in: .userDomainMask).first!
-        let archiveURL =
-            documentsDirectory.appendingPathComponent("savegame")
-                .appendingPathExtension("json")
-        if let loadedGameData = try? Data(contentsOf: archiveURL), let loadedGame = try? JSONDecoder().decode(Game.self, from: loadedGameData) {
-            game = loadedGame
-        } else {
-            game = Game()
-        }*/
         
-        updateResources()
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        //heading.backgroundColor = UIColor(red: 9/255, green: 95/255, blue: 234/255, alpha: 0.5)
+     
+       
         let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.navigationController?.navigationBar.barTintColor = backgroundColor
         heading.backgroundColor = backgroundColor
            bottomView.backgroundColor = backgroundColor
-        //heading.roundedCorners(top: false)
+        
       heading.layer.cornerRadius = 8
-        //view?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+     
         if let scene = GKScene(fileNamed: "GameScene") {
             
             // Get the SKScene from the loaded GKScene
@@ -84,6 +71,8 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gScene.rotate()
     }
@@ -149,11 +138,12 @@ class GameViewController: UIViewController {
                 FileManager.default.urls(for: .documentDirectory,
                     in: .userDomainMask).first!
             let archiveURL =
-                documentsDirectory.appendingPathComponent("savegame")
+                documentsDirectory.appendingPathComponent(game.gameName)
                     .appendingPathExtension("json")
             try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
         }
         catch {
+            print(error.localizedDescription)
         }
     }
 }

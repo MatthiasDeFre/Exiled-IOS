@@ -27,6 +27,7 @@
 		66982C8721E7929B006A88AA /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8621E7929B006A88AA /* Tile.swift */; };
 		66982C8921E7942F006A88AA /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8821E7942F006A88AA /* TileType.swift */; };
 		669F43E521F0B836005472C3 /* SaveGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */; };
+		669F43E721F0E099005472C3 /* NewGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F43E621F0E099005472C3 /* NewGameTableViewController.swift */; };
 		66CF068B21ECE4F30088B495 /* ResourceCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF068A21ECE4F30088B495 /* ResourceCollection.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		66982C8621E7929B006A88AA /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		66982C8821E7942F006A88AA /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
 		669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveGameTableViewController.swift; path = Exiled/Controller/SaveGameTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		669F43E621F0E099005472C3 /* NewGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewGameTableViewController.swift; path = Exiled/Controller/NewGameTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		66CF068A21ECE4F30088B495 /* ResourceCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 			children = (
 				66982C6021E78564006A88AA /* GameViewController.swift */,
 				669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */,
+				669F43E621F0E099005472C3 /* NewGameTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */,
 				66CF068B21ECE4F30088B495 /* ResourceCollection.swift in Sources */,
 				66982C6621E78565006A88AA /* GameScene.swift in Sources */,
+				669F43E721F0E099005472C3 /* NewGameTableViewController.swift in Sources */,
 				66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */,
 				66982C8121E78F30006A88AA /* MapSet.swift in Sources */,
 				66982C7F21E78EFA006A88AA /* Game.swift in Sources */,
