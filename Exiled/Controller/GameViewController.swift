@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mapView: SKView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let documentsDirectory =
+        /*let documentsDirectory =
             FileManager.default.urls(for: .documentDirectory,
                                      in: .userDomainMask).first!
         let archiveURL =
@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
             game = loadedGame
         } else {
             game = Game()
-        }
+        }*/
         
         updateResources()
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content

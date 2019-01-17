@@ -26,6 +26,7 @@
 		66982C8521E78FA5006A88AA /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8421E78FA4006A88AA /* EventType.swift */; };
 		66982C8721E7929B006A88AA /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8621E7929B006A88AA /* Tile.swift */; };
 		66982C8921E7942F006A88AA /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C8821E7942F006A88AA /* TileType.swift */; };
+		669F43E521F0B836005472C3 /* SaveGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */; };
 		66CF068B21ECE4F30088B495 /* ResourceCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF068A21ECE4F30088B495 /* ResourceCollection.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		66982C8421E78FA4006A88AA /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		66982C8621E7929B006A88AA /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		66982C8821E7942F006A88AA /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
+		669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveGameTableViewController.swift; path = Exiled/Controller/SaveGameTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		66CF068A21ECE4F30088B495 /* ResourceCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				66982C6021E78564006A88AA /* GameViewController.swift */,
+				669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66982C6A21E78565006A88AA /* AppDelegate.swift in Sources */,
+				669F43E521F0B836005472C3 /* SaveGameTableViewController.swift in Sources */,
 				66982C6721E78565006A88AA /* GameViewController.swift in Sources */,
 				66982C7921E789D6006A88AA /* Building.swift in Sources */,
 				66982C8721E7929B006A88AA /* Tile.swift in Sources */,
