@@ -14,6 +14,7 @@ class SaveGameTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -45,6 +46,7 @@ class SaveGameTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "saveGame", for: indexPath)
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
         let saveGame = saveGames[indexPath.row]
         cell.textLabel?.text = saveGame
         // Configure the cell...
@@ -73,6 +75,22 @@ class SaveGameTableViewController: UITableViewController {
         default:
             fatalError("unknown segue")
         }
+    }
+    override func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+        switch(section) {
+        case 0:return "Load Game"
+            
+        default :return ""
+            
+        }
+    }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as? UITableViewHeaderFooterView
+      
+        header?.textLabel?.font = UIFont.systemFont(ofSize: 20)
+        header?.textLabel?.textColor = .black
+        
     }
     /*
     // Override to support conditional editing of the table view.
