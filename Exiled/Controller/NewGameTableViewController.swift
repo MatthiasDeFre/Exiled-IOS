@@ -24,7 +24,7 @@ class NewGameTableViewController: UITableViewController {
         mapSets.register(UITableViewCell.self, forCellReuseIdentifier: "mapSet")
     }
     override func viewWillAppear(_ animated: Bool) {
-        mapSetTableView.mapSets = MapSetRepository().savedMapSets
+        mapSetTableView.mapSets = MapSetRepository().savedData
         print(mapSetsArray)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -40,7 +40,10 @@ class NewGameTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedMapSet = mapSetTableView.mapSets[mapSets.indexPathForSelectedRow!.row]
         print(selectedMapSet)
-        let game = Game(isCalled: txtGameName.text!, mapSet: MapSetRepository().loadMapSet(named: selectedMapSet))
+        guard let loadedMapSet = try? MapSetRepository().loadData(named: selectedMapSet) else {
+            return
+        }
+        let game = Game(isCalled: txtGameName.text!, mapSet: loadedMapSet)
         let gameViewController = segue.destination as! GameViewController
         let jsonEncoder = JSONEncoder()
         do {
@@ -52,7 +55,7 @@ class NewGameTableViewController: UITableViewController {
                 FileManager.default.urls(for: .documentDirectory,
                                          in: .userDomainMask).first!
             let archiveURL =
-                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.gameName)
+                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.name)
                     .appendingPathExtension("json")
             try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
         }

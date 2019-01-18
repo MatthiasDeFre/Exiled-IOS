@@ -18,13 +18,13 @@ class MapSetTableViewController: UITableViewController {
         super.viewDidLoad()
         if(!mapSetRepo.directoryExists) {
             do {
-                try mapSetRepo.createMapSetDirectory()
+                try mapSetRepo.createDirectory()
             } catch {
                 print(error)
             }
         }
         try! mapSetRepo.createDefaultMapSets()
-        mapSets = mapSetRepo.savedMapSets
+        mapSets = mapSetRepo.savedData
     }
 
     // MARK: - Table view data source

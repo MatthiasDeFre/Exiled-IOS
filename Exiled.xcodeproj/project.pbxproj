@@ -10,6 +10,8 @@
 		665CC3A321F21D47003E8650 /* MapSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3A221F21D47003E8650 /* MapSetTableViewController.swift */; };
 		665CC3A621F21EC8003E8650 /* MapSetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3A521F21EC8003E8650 /* MapSetRepository.swift */; };
 		665CC3AC21F23113003E8650 /* MapSetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3AB21F23113003E8650 /* MapSetTableView.swift */; };
+		665CC3AE21F238AF003E8650 /* SaveGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3AD21F238AF003E8650 /* SaveGameRepository.swift */; };
+		665CC3B021F23951003E8650 /* GenericRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3AF21F23951003E8650 /* GenericRepository.swift */; };
 		66982C5421E781E7006A88AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5321E781E7006A88AA /* Assets.xcassets */; };
 		66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5521E781E7006A88AA /* LaunchScreen.storyboard */; };
 		66982C6621E78565006A88AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C5F21E78564006A88AA /* GameScene.swift */; };
@@ -38,6 +40,8 @@
 		665CC3A221F21D47003E8650 /* MapSetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSetTableViewController.swift; sourceTree = "<group>"; };
 		665CC3A521F21EC8003E8650 /* MapSetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSetRepository.swift; sourceTree = "<group>"; };
 		665CC3AB21F23113003E8650 /* MapSetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSetTableView.swift; sourceTree = "<group>"; };
+		665CC3AD21F238AF003E8650 /* SaveGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGameRepository.swift; sourceTree = "<group>"; };
+		665CC3AF21F23951003E8650 /* GenericRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericRepository.swift; sourceTree = "<group>"; };
 		66982C4321E781E5006A88AA /* Exiled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exiled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66982C5321E781E7006A88AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66982C5621E781E7006A88AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				665CC3A521F21EC8003E8650 /* MapSetRepository.swift */,
+				665CC3AD21F238AF003E8650 /* SaveGameRepository.swift */,
+				665CC3AF21F23951003E8650 /* GenericRepository.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 				66982C8321E78F69006A88AA /* Event.swift in Sources */,
 				66982C8921E7942F006A88AA /* TileType.swift in Sources */,
 				66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */,
+				665CC3B021F23951003E8650 /* GenericRepository.swift in Sources */,
 				66CF068B21ECE4F30088B495 /* ResourceCollection.swift in Sources */,
 				66982C6621E78565006A88AA /* GameScene.swift in Sources */,
+				665CC3AE21F238AF003E8650 /* SaveGameRepository.swift in Sources */,
 				669F43E721F0E099005472C3 /* NewGameTableViewController.swift in Sources */,
 				66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */,
 				66982C8121E78F30006A88AA /* MapSet.swift in Sources */,

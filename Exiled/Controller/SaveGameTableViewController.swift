@@ -14,8 +14,8 @@ class SaveGameTableViewController: UITableViewController {
     @IBAction func unwindToSaveGames(unwindSegue: UIStoryboardSegue) {
         print("unwind")
         if let gameViewController = unwindSegue.source as? GameViewController {
-            if(!saveGames.contains(gameViewController.game.gameName)) {
-                saveGames.append(gameViewController.game.gameName)
+            if(!saveGames.contains(gameViewController.game.name)) {
+                saveGames.append(gameViewController.game.name)
             }
         }
         

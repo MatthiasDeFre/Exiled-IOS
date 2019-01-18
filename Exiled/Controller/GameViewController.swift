@@ -141,19 +141,10 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        let jsonEncoder = JSONEncoder()
+     
         do {
         
-            let jsonData = try jsonEncoder.encode(game)
-            let jsonString = String(data: jsonData, encoding: .utf8)
-            print("JSON String : " + jsonString!)
-            let documentsDirectory =
-                FileManager.default.urls(for: .documentDirectory,
-                    in: .userDomainMask).first!
-            let archiveURL =
-            documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.gameName)
-                    .appendingPathExtension("json")
-            try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
+            try SaveGameRepository().saveData(element: game)
         }
         catch {
             print(error.localizedDescription)

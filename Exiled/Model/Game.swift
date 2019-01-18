@@ -9,20 +9,20 @@
 import Foundation
 //Wood, Stone, Gold
 
-class Game : Codable{
-    var gameName : String
+class Game : Named{
+    var name : String
     var mapSet : MapSet = MapSet(name: "test")
     var resources : ResourceCollection
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn
     }
     private enum CodingKeys: String, CodingKey {
-        case gameName
+        case name
         case mapSet
         case resources
     }
     init(isCalled gameName : String, mapSet : MapSet) {
-        self.gameName = gameName
+        self.name = gameName
         self.mapSet = mapSet
         resources = ResourceCollection(wood: 1000,stone: 1000,gold: 1000)
     }

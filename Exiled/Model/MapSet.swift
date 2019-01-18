@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class MapSet : Codable {
+class MapSet : Named {
     var name : String
     var map : [[TileType]]
     var undiscoveredEvents = [Int : Event]()
