@@ -11,13 +11,29 @@ import UIKit
 class SaveGameTableViewController: UITableViewController {
 
     var saveGames = [String]()
-    
+    @IBAction func unwindToSaveGames(unwindSegue: UIStoryboardSegue) {
+        print("unwind")
+        if let gameViewController = unwindSegue.source as? GameViewController {
+            if(!saveGames.contains(gameViewController.game.gameName)) {
+                saveGames.append(gameViewController.game.gameName)
+            }
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
         let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("savegames", isDirectory: true)
+        print(documentsURL)
+        do {
+            try fileManager.createDirectory(at: documentsURL, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print(error)
+        }
+        
         if var files = try? fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil) {
             files = files.filter{$0.path.hasSuffix(".json")}
             for var file in files {
@@ -37,6 +53,7 @@ class SaveGameTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        print(saveGames)
         tableView.reloadData()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +80,7 @@ class SaveGameTableViewController: UITableViewController {
                 FileManager.default.urls(for: .documentDirectory,
                                          in: .userDomainMask).first!
             let archiveURL =
-                documentsDirectory.appendingPathComponent(saveGames[tableView.indexPathForSelectedRow!.row])
+                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(saveGames[tableView.indexPathForSelectedRow!.row])
                     .appendingPathExtension("json")
             if let loadedGameData = try? Data(contentsOf: archiveURL), let loadedGame = try? JSONDecoder().decode(Game.self, from: loadedGameData) {
                 game = loadedGame
@@ -97,49 +114,28 @@ class SaveGameTableViewController: UITableViewController {
         header?.textLabel?.textColor = .black
         
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView,
+                               editingStyleForRowAt indexPath: IndexPath) ->
+        UITableViewCell.EditingStyle {
+            return .delete
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit
+        editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
+        IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+            do {
+                let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                  in: .userDomainMask).first!
+                try FileManager.default.removeItem(at:
+                    documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(saveGames[indexPath.row])
+                        .appendingPathExtension("json"))
+                saveGames.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: . automatic)
+            } catch {
+                print(error)
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

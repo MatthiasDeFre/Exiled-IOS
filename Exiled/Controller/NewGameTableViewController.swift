@@ -27,8 +27,26 @@ class NewGameTableViewController: UITableViewController {
 
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let game = Game(isCalled: txtGameName.text!)
         let gameViewController = segue.destination as! GameViewController
-        gameViewController.game = Game(isCalled: txtGameName.text!);
+        let jsonEncoder = JSONEncoder()
+        do {
+            
+            let jsonData = try jsonEncoder.encode(game)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            print("JSON String : " + jsonString!)
+            let documentsDirectory =
+                FileManager.default.urls(for: .documentDirectory,
+                                         in: .userDomainMask).first!
+            let archiveURL =
+                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.gameName)
+                    .appendingPathExtension("json")
+            try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        gameViewController.game = game;
     }
 
    

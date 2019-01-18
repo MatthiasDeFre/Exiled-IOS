@@ -29,9 +29,22 @@ class GameViewController: UIViewController {
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var heading: UIView!
     @IBOutlet weak var mapView: SKView!
+    
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "unwindToSaveGames":
+            let viewController = self.navigationController!.viewControllers.filter{$0.isKind(of: SaveGameTableViewController.self)}.first!
+            self.navigationController?.popToViewController(viewController, animated: true)
+            break
+
+        default:
+            fatalError("unknown segue")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateResources()
      
        
         let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
@@ -138,7 +151,7 @@ class GameViewController: UIViewController {
                 FileManager.default.urls(for: .documentDirectory,
                     in: .userDomainMask).first!
             let archiveURL =
-                documentsDirectory.appendingPathComponent(game.gameName)
+            documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.gameName)
                     .appendingPathExtension("json")
             try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
         }

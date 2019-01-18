@@ -293,6 +293,11 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Exiled" id="ofw-Ab-nbp">
+                        <barButtonItem key="leftBarButtonItem" title="Back To Saves" id="Ifw-57-2d6">
+                            <connections>
+                                <segue destination="Qkm-By-pYt" kind="unwind" identifier="unwindToSaveGames" unwindAction="unwindToSaveGamesWithUnwindSegue:" id="93W-e8-ego"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="rmd-g4-yYo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fZL-8e-Gw8">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -318,6 +323,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="Qkm-By-pYt" userLabel="Exit" sceneMemberID="exit"/>
                 <customObject id="tgB-Ar-xsg"/>
             </objects>
             <point key="canvasLocation" x="3183" y="-595"/>
