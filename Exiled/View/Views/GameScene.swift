@@ -85,13 +85,15 @@ class GameScene: SKScene {
             selectionBox = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
             let rect = CGRect(x: 0.0, y: 0.0, width: 128, height: 128)
             
-            selectionBox = SKShapeNode(path: roundedPolygonPath(rect: rect, lineWidth: 0, sides: 6, cornerRadius: 0, rotationOffset: CGFloat(Double.pi / 2.0)).cgPath)
+            let path = roundedPolygonPath(rect: rect, lineWidth: 0, sides: 6, cornerRadius: 0, rotationOffset: CGFloat(Double.pi / 2.0))
+            selectionBox = SKShapeNode(path: path.cgPath)
            var point =  map.centerOfTile(atColumn: column, row: row)
             point.x = point.x - 55
             point.y = point.y - 55
             
             selectionBox!.position = point
-            selectionBox!.strokeColor = .red
+            selectionBox!.strokeColor = .black
+           
             map.addChild(selectionBox!)
             
             print(column, " r", row)
@@ -99,6 +101,7 @@ class GameScene: SKScene {
             clickCall(row, column)
         }
     }
+ 
     @IBAction func handleTapFrom(recognizer: UITapGestureRecognizer) {
 
         if recognizer.state != .ended {

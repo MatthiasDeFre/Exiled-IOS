@@ -141,9 +141,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-     
         do {
-        
             try SaveGameRepository().saveData(element: game)
         }
         catch {

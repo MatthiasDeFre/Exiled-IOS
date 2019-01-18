@@ -24,36 +24,17 @@ class SaveGameTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
-        let fileManager = FileManager.default
-        
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("savegames", isDirectory: true)
-        print(documentsURL)
-        do {
-            try fileManager.createDirectory(at: documentsURL, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            print(error)
-        }
-        
-        if var files = try? fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil) {
-            files = files.filter{$0.path.hasSuffix(".json")}
-            for var file in files {
-                print(file.lastPathComponent)
-                file.deletePathExtension()
-                
-                saveGames.append(file.lastPathComponent)
+        if(!SaveGameRepository().directoryExists) {
+            guard let _ = try? SaveGameRepository().createDirectory() else {
+                return
             }
-
         }
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        saveGames = SaveGameRepository().savedData
+        print(saveGames)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        print(saveGames)
+       
         tableView.reloadData()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,21 +56,13 @@ class SaveGameTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "loadGame":
-            var game : Game
-            let documentsDirectory =
-                FileManager.default.urls(for: .documentDirectory,
-                                         in: .userDomainMask).first!
-            let archiveURL =
-                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(saveGames[tableView.indexPathForSelectedRow!.row])
-                    .appendingPathExtension("json")
-            if let loadedGameData = try? Data(contentsOf: archiveURL), let loadedGame = try? JSONDecoder().decode(Game.self, from: loadedGameData) {
-                game = loadedGame
-            } else {
-                //Failsafe TODO kill prepare
-                game = Game(isCalled: "ErrorLoadingGame", mapSet: MapSet(name:"DEFAULT"))
+          
+            do {
+                let gameViewController = segue.destination as! GameViewController
+                   gameViewController.game = try SaveGameRepository().loadData(named: saveGames[tableView.indexPathForSelectedRow!.row])
+            } catch {
+             print(error)
             }
-            let gameViewController = segue.destination as! GameViewController
-            gameViewController.game = game;
             break
         case "newGame":
             
@@ -126,12 +99,8 @@ class SaveGameTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             do {
-            
-                let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                  in: .userDomainMask).first!
-                try FileManager.default.removeItem(at:
-                    documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(saveGames[indexPath.row])
-                        .appendingPathExtension("json"))
+                
+                try SaveGameRepository().removeData(named: saveGames[indexPath.row])
                 saveGames.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: . automatic)
             } catch {
