@@ -7,8 +7,8 @@
 //
 
 import Foundation
-enum ResourceType {
-    case wood
-    case stone
-    case gold
+enum ResourceType : String{
+    case wood = "w"
+    case stone = "s"
+    case gold = "g"
 }
