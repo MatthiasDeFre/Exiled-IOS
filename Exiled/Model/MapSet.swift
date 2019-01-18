@@ -8,6 +8,7 @@
 
 import Foundation
 class MapSet : Codable {
+    var name : String
     var map : [[TileType]]
     var undiscoveredEvents = [Int : Event]()
     var possibleEvents = [Event]()
@@ -61,8 +62,9 @@ class MapSet : Codable {
     }
     private enum CodingKeys: String, CodingKey {
         case map
+        case name
     }
-    init() {
+    init(name : String) {
         map =
             [[.water,.land,.land,.land,.land,.land],
              [.land,.land,.land,.land,.land,.land],
@@ -70,6 +72,7 @@ class MapSet : Codable {
              [.land,.land,.land,.land,.land,.water],
              [.land,.land,.land,.land,.water,.water]
             ]
+        self.name = name
     }
    
     func selectTile(from coordinates : (Int, Int)) -> Tile {

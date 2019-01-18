@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		665CC3A321F21D47003E8650 /* MapSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3A221F21D47003E8650 /* MapSetTableViewController.swift */; };
+		665CC3A621F21EC8003E8650 /* MapSetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3A521F21EC8003E8650 /* MapSetRepository.swift */; };
 		66982C5421E781E7006A88AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5321E781E7006A88AA /* Assets.xcassets */; };
 		66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5521E781E7006A88AA /* LaunchScreen.storyboard */; };
 		66982C6621E78565006A88AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C5F21E78564006A88AA /* GameScene.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		665CC3A221F21D47003E8650 /* MapSetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSetTableViewController.swift; sourceTree = "<group>"; };
+		665CC3A521F21EC8003E8650 /* MapSetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSetRepository.swift; sourceTree = "<group>"; };
 		66982C4321E781E5006A88AA /* Exiled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exiled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66982C5321E781E7006A88AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66982C5621E781E7006A88AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		665CC3A421F21E61003E8650 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				665CC3A521F21EC8003E8650 /* MapSetRepository.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		66982C3A21E781E5006A88AA = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,7 @@
 		66982C4521E781E5006A88AA /* Exiled */ = {
 			isa = PBXGroup;
 			children = (
+				665CC3A421F21E61003E8650 /* Persistence */,
 				66982C7521E787D2006A88AA /* Controller */,
 				66982C7421E787C7006A88AA /* View */,
 				66982C7321E787B2006A88AA /* Model */,
@@ -130,6 +143,7 @@
 		66982C7521E787D2006A88AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				665CC3A221F21D47003E8650 /* MapSetTableViewController.swift */,
 				66982C6021E78564006A88AA /* GameViewController.swift */,
 				669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */,
 				669F43E621F0E099005472C3 /* NewGameTableViewController.swift */,
@@ -248,6 +262,8 @@
 				66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */,
 				66982C8121E78F30006A88AA /* MapSet.swift in Sources */,
 				66982C7F21E78EFA006A88AA /* Game.swift in Sources */,
+				665CC3A321F21D47003E8650 /* MapSetTableViewController.swift in Sources */,
+				665CC3A621F21EC8003E8650 /* MapSetRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

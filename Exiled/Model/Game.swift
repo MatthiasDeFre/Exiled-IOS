@@ -11,7 +11,7 @@ import Foundation
 
 class Game : Codable{
     var gameName : String
-    var mapSet : MapSet = MapSet()
+    var mapSet : MapSet = MapSet(name: "test")
     var resources : ResourceCollection
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn

@@ -126,6 +126,7 @@ class SaveGameTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             do {
+            
                 let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
                                                                   in: .userDomainMask).first!
                 try FileManager.default.removeItem(at:
