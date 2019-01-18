@@ -82,6 +82,30 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Map Sets" id="POi-ew-tci">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3z7-M6-TU8">
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3z7-M6-TU8" id="3Lq-rQ-9DD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-3w-9ks">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Cla-3w-9ks" secondAttribute="trailing" id="1e8-bz-MBb"/>
+                                                <constraint firstItem="Cla-3w-9ks" firstAttribute="top" secondItem="3Lq-rQ-9DD" secondAttribute="top" id="GBA-pW-eS6"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cla-3w-9ks" secondAttribute="bottom" id="iDB-6V-OHJ"/>
+                                                <constraint firstItem="Cla-3w-9ks" firstAttribute="leading" secondItem="3Lq-rQ-9DD" secondAttribute="leading" id="n3s-89-NBA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="4hX-BD-Ygj" id="0CS-vw-7KJ"/>
@@ -96,6 +120,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapSets" destination="Cla-3w-9ks" id="HMK-Ao-ILL"/>
                         <outlet property="txtGameName" destination="KEU-rh-PhF" id="WwS-zX-NY5"/>
                     </connections>
                 </tableViewController>

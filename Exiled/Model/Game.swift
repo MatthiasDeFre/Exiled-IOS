@@ -21,8 +21,9 @@ class Game : Codable{
         case mapSet
         case resources
     }
-    init(isCalled gameName : String) {
+    init(isCalled gameName : String, mapSet : MapSet) {
         self.gameName = gameName
+        self.mapSet = mapSet
         resources = ResourceCollection(wood: 1000,stone: 1000,gold: 1000)
     }
    

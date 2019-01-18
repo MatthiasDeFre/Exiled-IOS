@@ -35,8 +35,14 @@ struct MapSetRepository {
     func createDefaultMapSets() throws{
         let mapSet1 = MapSet(name: "FirstMap")
         let mapSet2 = MapSet(name: "SecondMap")
+        let mapSet3 = MapSet(name: "ThirdMap")
+        mapSet3.map = [[.water, .water, .water,
+                       ],
+                       [.lumberyard, .lumberyard, .lumberyard],
+                    [.land, .land, .land]]
         try saveMapSet(mapSet: mapSet1)
         try saveMapSet(mapSet: mapSet2)
+        try saveMapSet(mapSet: mapSet3)
     }
     func saveMapSet(mapSet : MapSet) throws{
         let jsonEncoder = JSONEncoder.init()
@@ -46,6 +52,15 @@ struct MapSetRepository {
             .appendingPathExtension("json")
         print("JSON String : " + jsonString!)
         try jsonString?.write(to: savedURL, atomically: true, encoding: .utf8)
+    }
+    func loadMapSet(named name : String) -> MapSet{
+        let loadURL = mapSetsURL.appendingPathComponent(name).appendingPathExtension("json")
+        print(loadURL)
+        if let loadedMapSetData = try? Data(contentsOf: loadURL), let loadedMapSet = try? JSONDecoder().decode(MapSet.self, from: loadedMapSetData) {
+            return loadedMapSet
+        }
+     
+            return MapSet(name: "DEFAULT")
     }
     
 }

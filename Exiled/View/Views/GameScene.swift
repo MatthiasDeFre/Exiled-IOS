@@ -155,11 +155,11 @@ class GameScene: SKScene {
         self.addChild(map)
     
         for (rowIndex, tileRow) in tiles.enumerated() {
-            print("Row ",rowIndex)
+          
             for (colIndex, tile) in tileRow.enumerated() {
             
                 map.setTileGroup(map.tileSet.tileGroups.first(where: {$0.name == tile.rawValue}), forColumn: colIndex, row: rowIndex)
-                 print("Col ",colIndex)
+               
             }
           
         }

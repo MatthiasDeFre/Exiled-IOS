@@ -86,7 +86,7 @@ class SaveGameTableViewController: UITableViewController {
                 game = loadedGame
             } else {
                 //Failsafe TODO kill prepare
-                game = Game(isCalled: "ErrorLoadingGame")
+                game = Game(isCalled: "ErrorLoadingGame", mapSet: MapSet(name:"DEFAULT"))
             }
             let gameViewController = segue.destination as! GameViewController
             gameViewController.game = game;

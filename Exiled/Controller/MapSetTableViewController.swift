@@ -12,6 +12,8 @@ class MapSetTableViewController: UITableViewController {
 
     var mapSets = [String]()
     let mapSetRepo = MapSetRepository()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if(!mapSetRepo.directoryExists) {
