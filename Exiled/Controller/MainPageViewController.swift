@@ -17,6 +17,7 @@ class MainPageViewController: UIViewController {
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: nil)
         backButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "OptimusPrincepsSemiBold", size: 20)!], for: UIControl.State.normal)
         navigationItem.backBarButtonItem = backButton
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     }
     
 

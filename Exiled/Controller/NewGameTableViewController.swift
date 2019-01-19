@@ -22,7 +22,10 @@ class NewGameTableViewController: UITableViewController {
         mapSets.delegate = mapSetTableView
         mapSets.dataSource = mapSetTableView
         mapSets.register(UITableViewCell.self, forCellReuseIdentifier: "mapSet")
-       
+        self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        mapSets.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+       txtGameName.backgroundColor = UIColor(patternImage: UIImage(named: "inputfield")!)
+        txtGameName.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
     }
     override func viewWillAppear(_ animated: Bool) {
         if(!MapSetRepository().directoryExists) {
@@ -36,13 +39,46 @@ class NewGameTableViewController: UITableViewController {
         mapSetTableView.mapSets = MapSetRepository().savedData
         print(mapSetsArray)
     }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell =  super.tableView(tableView, cellForRowAt: indexPath)
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
+        
+        // Configure the cell...
+        
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            return tableView.bounds.height - UITableView.automaticDimension
-        } else {
-            return UITableView.automaticDimension
+        switch indexPath.section {
+        case 0:
+             return 100
+        case 1:
+             return tableView.bounds.height - UITableView.automaticDimension
+        default:
+              return UITableView.automaticDimension
+        }
+       
+    }
+    
+    override func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+        switch(section) {
+        case 0:return "Game Name"
+        
+        default :return ""
+            
         }
     }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as? UITableViewHeaderFooterView
+        
+        header?.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
+        header?.textLabel?.textColor = .black
+        
+    }
+    
     // MARK: - Table view data source
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if txtGameName.text!.isEmpty || mapSets.indexPathForSelectedRow == nil {

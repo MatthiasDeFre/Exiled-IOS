@@ -23,4 +23,20 @@ class MapSetTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
           cell.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: cell.textLabel!.font.pointSize)
         return cell
     }
+    func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String? {
+        switch(section) {
+        case 0:return "Map Sets"
+       
+        default :return ""
+            
+        }
+    }
+     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as? UITableViewHeaderFooterView
+        
+        header?.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
+        header?.textLabel?.textColor = .black
+        
+    }
 }
