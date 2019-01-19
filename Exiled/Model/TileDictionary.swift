@@ -14,6 +14,7 @@ struct TileDictionary {
         tileDictionary = [
             .water : Tile(description: "Water", is: TileType.water),
             .land : Tile(description: "Land", is: TileType.land, upgradesTo: TileType.lumberyard),
+            .rock : Tile(description: "Rock", is: TileType.rock, upgradesTo: TileType.mine),
             .mine : Building(description: "Mine", is: TileType.mine, gives: 50, of: ResourceType.stone, costs: ResourceCollection(wood: 50,stone: 50,gold: 0)),
             .lumberyard : Building(description: "Lumberyard", is: TileType.lumberyard, gives: 50, of: ResourceType.wood, costs: ResourceCollection(wood: 1000, stone: 10,gold: 0)),
             .mint : Building(description: "Mint", is: TileType.mint, gives: 50, of: ResourceType.gold, costs: ResourceCollection(wood: 20, stone: 100,gold: 30)),
