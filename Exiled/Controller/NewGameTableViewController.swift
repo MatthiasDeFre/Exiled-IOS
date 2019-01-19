@@ -22,6 +22,7 @@ class NewGameTableViewController: UITableViewController {
         mapSets.delegate = mapSetTableView
         mapSets.dataSource = mapSetTableView
         mapSets.register(UITableViewCell.self, forCellReuseIdentifier: "mapSet")
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         if(!MapSetRepository().directoryExists) {
@@ -54,6 +55,7 @@ class NewGameTableViewController: UITableViewController {
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("SEQUE NEW GAME")
         let selectedMapSet = mapSetTableView.mapSets[mapSets.indexPathForSelectedRow!.row]
         print(selectedMapSet)
         guard let loadedMapSet = try? MapSetRepository().loadData(named: selectedMapSet) else {

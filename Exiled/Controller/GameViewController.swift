@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
     
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
         case "unwindToSaveGames":
             let viewController = self.navigationController!.viewControllers.filter{$0.isKind(of: SaveGameTableViewController.self)}.first!
@@ -48,7 +49,7 @@ class GameViewController: UIViewController {
         
        
         let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        self.navigationController?.navigationBar.barTintColor = backgroundColor
+     
         heading.backgroundColor = backgroundColor
            bottomView.backgroundColor = backgroundColor
         

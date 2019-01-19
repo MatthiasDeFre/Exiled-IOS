@@ -16,6 +16,9 @@
 		665CC3B421F25BD0003E8650 /* EventActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3B321F25BD0003E8650 /* EventActionType.swift */; };
 		665CC3B621F25C76003E8650 /* EventActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3B521F25C76003E8650 /* EventActionFactory.swift */; };
 		6697389421F376EA00B29348 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697389321F376EA00B29348 /* CustomAlertViewController.swift */; };
+		6697389C21F37E0900B29348 /* OptimusPrincepsSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6697389A21F37E0900B29348 /* OptimusPrincepsSemiBold.ttf */; };
+		6697389D21F37E0900B29348 /* OptimusPrinceps.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6697389B21F37E0900B29348 /* OptimusPrinceps.ttf */; };
+		6697389F21F380F000B29348 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697389E21F380F000B29348 /* MainPageViewController.swift */; };
 		66982C5421E781E7006A88AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5321E781E7006A88AA /* Assets.xcassets */; };
 		66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5521E781E7006A88AA /* LaunchScreen.storyboard */; };
 		66982C6621E78565006A88AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C5F21E78564006A88AA /* GameScene.swift */; };
@@ -50,6 +53,9 @@
 		665CC3B321F25BD0003E8650 /* EventActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionType.swift; sourceTree = "<group>"; };
 		665CC3B521F25C76003E8650 /* EventActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionFactory.swift; sourceTree = "<group>"; };
 		6697389321F376EA00B29348 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		6697389A21F37E0900B29348 /* OptimusPrincepsSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OptimusPrincepsSemiBold.ttf; sourceTree = "<group>"; };
+		6697389B21F37E0900B29348 /* OptimusPrinceps.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OptimusPrinceps.ttf; sourceTree = "<group>"; };
+		6697389E21F380F000B29348 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		66982C4321E781E5006A88AA /* Exiled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exiled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66982C5321E781E7006A88AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66982C5621E781E7006A88AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		6697389921F37DF000B29348 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6697389B21F37E0900B29348 /* OptimusPrinceps.ttf */,
+				6697389A21F37E0900B29348 /* OptimusPrincepsSemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		66982C3A21E781E5006A88AA = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +132,7 @@
 		66982C4521E781E5006A88AA /* Exiled */ = {
 			isa = PBXGroup;
 			children = (
+				6697389921F37DF000B29348 /* Fonts */,
 				665CC3A421F21E61003E8650 /* Persistence */,
 				66982C7521E787D2006A88AA /* Controller */,
 				66982C7421E787C7006A88AA /* View */,
@@ -166,6 +182,7 @@
 				66982C6021E78564006A88AA /* GameViewController.swift */,
 				669F43E421F0B836005472C3 /* SaveGameTableViewController.swift */,
 				669F43E621F0E099005472C3 /* NewGameTableViewController.swift */,
+				6697389E21F380F000B29348 /* MainPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +272,8 @@
 				66982C5421E781E7006A88AA /* Assets.xcassets in Resources */,
 				66982C6E21E78580006A88AA /* MyTileSet.sks in Resources */,
 				66982C6C21E78565006A88AA /* Main.storyboard in Resources */,
+				6697389D21F37E0900B29348 /* OptimusPrinceps.ttf in Resources */,
+				6697389C21F37E0900B29348 /* OptimusPrincepsSemiBold.ttf in Resources */,
 				66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */,
 				66982C6B21E78565006A88AA /* Actions.sks in Resources */,
 			);
@@ -287,6 +306,7 @@
 				669F43E721F0E099005472C3 /* NewGameTableViewController.swift in Sources */,
 				66982C7B21E78B86006A88AA /* ResourceType.swift in Sources */,
 				66982C8121E78F30006A88AA /* MapSet.swift in Sources */,
+				6697389F21F380F000B29348 /* MainPageViewController.swift in Sources */,
 				665CC3B621F25C76003E8650 /* EventActionFactory.swift in Sources */,
 				665CC3AC21F23113003E8650 /* MapSetTableView.swift in Sources */,
 				66982C7F21E78EFA006A88AA /* Game.swift in Sources */,

@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OptimusPrincepsSemiBold.ttf">
+            <string>OptimusPrincepsSemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Savegames-->
         <scene sceneID="p0A-Gf-TmM">
@@ -36,10 +41,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Savegames" id="VFJ-NP-Dx2">
-                        <barButtonItem key="rightBarButtonItem" title="New Game" id="G7P-1m-Gx1">
-                            <connections>
-                                <segue destination="4hX-BD-Ygj" kind="show" identifier="newGame" id="dca-WE-HbF"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="vrO-Xh-LOt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Z0-WW-f2a">
+                                <rect key="frame" x="253" y="5" width="106" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="20"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <segue destination="4hX-BD-Ygj" kind="show" identifier="newGame" id="gpd-Jq-bOW"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -113,10 +124,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Game" id="EPu-Le-gr0">
-                        <barButtonItem key="rightBarButtonItem" title="Begin" id="ywB-Zc-j6P">
-                            <connections>
-                                <segue destination="BV1-FR-VrT" kind="show" id="lkR-F4-Bkh"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="3yc-r9-523">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b4G-Na-qOe">
+                                <rect key="frame" x="276" y="5" width="83" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="20"/>
+                                <state key="normal" title="Begin"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="a8c-41-dPe"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -128,25 +145,27 @@
             </objects>
             <point key="canvasLocation" x="3180" y="-1407"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Page View Controller-->
         <scene sceneID="6Tc-ke-nO7">
             <objects>
-                <viewController id="2ym-ED-cCv" sceneMemberID="viewController">
+                <viewController id="2ym-ED-cCv" customClass="MainPageViewController" customModule="Exiled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wc6-Z4-mxb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-TT-Jcw">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <rect key="frame" x="157" y="323" width="65" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="iIT-kb-h3S" kind="show" id="e4x-mG-6Ft"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cz-Wc-9Yn">
-                                <rect key="frame" x="164" y="468" width="46" height="30"/>
+                                <rect key="frame" x="157" y="473" width="65" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="6HM-Hc-HPC" kind="show" identifier="mapSets" id="dzg-BJ-dnl"/>
@@ -212,54 +231,54 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="38"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BhJ-0H-cvR">
-                                        <rect key="frame" x="10" y="0.0" width="305.5" height="38"/>
+                                        <rect key="frame" x="10" y="0.0" width="314.5" height="38"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JyK-6L-pU4">
-                                                <rect key="frame" x="0.0" y="0.0" width="65" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="38"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wood:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfe-Ru-zfd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="49.5" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="54.5" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hux-ti-cO5">
-                                                        <rect key="frame" x="54.5" y="0.0" width="10.5" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="59.5" y="0.0" width="7" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-Yc-7sm">
-                                                <rect key="frame" x="85" y="0.0" width="104.5" height="38"/>
+                                                <rect key="frame" x="86.5" y="0.0" width="106" height="38"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L3-ae-CFk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="49.5" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1i-FT-fYt">
-                                                        <rect key="frame" x="54.5" y="0.0" width="50" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="56" y="0.0" width="50" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rMr-T3-Uhh">
-                                                <rect key="frame" x="209.5" y="0.0" width="96" height="38"/>
+                                                <rect key="frame" x="212.5" y="0.0" width="102" height="38"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gold:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXi-hW-pgK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg3-mP-pyk">
-                                                        <rect key="frame" x="46" y="0.0" width="50" height="38"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="52" y="0.0" width="50" height="38"/>
+                                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -294,19 +313,20 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-Ac-sfU">
-                                        <rect key="frame" x="20" y="10" width="342" height="30"/>
+                                        <rect key="frame" x="20" y="10" width="357.5" height="30"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-4O-kEW">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGH-S0-3AU" userLabel="UpgradeDescription">
-                                                <rect key="frame" x="240" y="0.0" width="42" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="240" y="0.0" width="43.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLq-IR-2Tn">
-                                                <rect key="frame" x="282" y="0.0" width="60" height="30"/>
+                                                <rect key="frame" x="283.5" y="0.0" width="74" height="30"/>
+                                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                                 <state key="normal" title="Upgrade"/>
                                                 <connections>
                                                     <action selector="upgradePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="16r-92-7o0"/>
@@ -318,7 +338,8 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdr-9c-4L5">
-                                        <rect key="frame" x="291" y="10" width="64" height="30"/>
+                                        <rect key="frame" x="263" y="10" width="92" height="30"/>
+                                        <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
                                         <state key="normal" title="Next turn"/>
                                         <connections>
                                             <action selector="nextTurnPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8BB-uJ-W3G"/>
@@ -354,15 +375,22 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Exiled" id="ofw-Ab-nbp">
-                        <barButtonItem key="leftBarButtonItem" title="Back To Saves" id="Ifw-57-2d6">
-                            <connections>
-                                <segue destination="Qkm-By-pYt" kind="unwind" identifier="unwindToSaveGames" unwindAction="unwindToSaveGamesWithUnwindSegue:" id="93W-e8-ego"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="rmd-g4-yYo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fZL-8e-Gw8">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back To Saves" style="done" id="COR-1D-Z3L">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IoT-Vl-qNd">
+                                <rect key="frame" x="16" y="5" width="132" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="20"/>
+                                <state key="normal" title="Back To Saves"/>
+                                <connections>
+                                    <segue destination="Qkm-By-pYt" kind="unwind" identifier="unwindToSaveGames" unwindAction="unwindToSaveGamesWithUnwindSegue:" id="y8C-bk-IAR"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="rmd-g4-yYo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fZL-8e-Gw8">
+                                <rect key="frame" x="276" y="5" width="83" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="20"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="savePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="nkV-jp-gYp"/>
@@ -409,6 +437,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lkR-F4-Bkh"/>
+        <segue reference="a8c-41-dPe"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

@@ -76,6 +76,7 @@ class MapSet : Named {
              [.land,.land,.land,.land,.water,.water]
             ]
         possibleEvents.append(Event(eventId: 1, isType: .winR, using: ["W", "500"], titled: "Wood Festival", description: "Due to wood festival you will need to trade either gold or stone with other cities. Gain 500 but lose 500 of the chosen material", isFollowedBy: [2,3], hasActions: [EventAction(description: "Lose Gold", ofType: .loseR, withValues: ["G","1000"]),EventAction(description: "Lose Stone", ofType: .loseR, withValues: ["S","1000"])]))
+        undiscoveredEvents[2] = Event(eventId: 2, isType: .winR, using: ["W", "500"], titled: "Test sedcond event", description: "sfddsfsddfsfd")
         self.name = name
     }
    

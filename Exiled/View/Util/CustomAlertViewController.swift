@@ -16,7 +16,20 @@ class CustomAlertViewController: UIAlertController {
         self.view.subviews.first?.subviews.first?.subviews.first?.isOpaque = true
         let actionView = self.view.subviews.first?.subviews.first?.subviews.first?.subviews.last
         actionView?.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
+        
+        let titleFont = [NSAttributedString.Key.font: UIFont(name: "OptimusPrincepsSemiBold", size: 22.0)!]
+        let messageFont = [NSAttributedString.Key.font: UIFont(name: "OptimusPrinceps", size: 18.0)!]
+        let titleAttrString = NSMutableAttributedString(string: self.title ?? "Default Title", attributes: titleFont)
+        let messageAttrString = NSMutableAttributedString(string: self.message ?? "Default Message", attributes: messageFont)
+        
+    
+        
+        setValue(titleAttrString, forKey: "attributedTitle")
+        setValue(messageAttrString, forKey: "attributedMessage")
+       
+       
     }
     
 
 }
+

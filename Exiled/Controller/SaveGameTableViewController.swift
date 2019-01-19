@@ -30,7 +30,10 @@ class SaveGameTableViewController: UITableViewController {
             }
         }
         saveGames = SaveGameRepository().savedData
-        print(saveGames)
+        
+        let backButton = UIBarButtonItem(title: "Save Games", style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        backButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "OptimusPrincepsSemiBold", size: 20)!], for: UIControl.State.normal)
+        navigationItem.backBarButtonItem = backButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +52,7 @@ class SaveGameTableViewController: UITableViewController {
         cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
         let saveGame = saveGames[indexPath.row]
         cell.textLabel?.text = saveGame
+          cell.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: cell.textLabel!.font.pointSize)
         // Configure the cell...
 
         return cell
@@ -83,7 +87,7 @@ class SaveGameTableViewController: UITableViewController {
         
         let header = view as? UITableViewHeaderFooterView
       
-        header?.textLabel?.font = UIFont.systemFont(ofSize: 20)
+        header?.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
         header?.textLabel?.textColor = .black
         
     }

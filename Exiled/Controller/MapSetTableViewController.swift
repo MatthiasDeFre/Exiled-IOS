@@ -38,7 +38,7 @@ class MapSetTableViewController: UITableViewController {
         cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
         let mapSet = mapSets[indexPath.row]
         cell.textLabel?.text = mapSet
-   
+        cell.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: cell.textLabel!.font.pointSize)
         
         return cell
     }
