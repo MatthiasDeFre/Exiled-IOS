@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateResources()
-     
+        
        
         let backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.navigationController?.navigationBar.barTintColor = backgroundColor
@@ -135,11 +135,34 @@ class GameViewController: UIViewController {
         btnUpgrade.isEnabled = game.canUpgrade()
     }
     @IBAction func nextTurnPressed(_ sender: Any) {
-        game.nextTurn()
-        updateResources()
-         btnUpgrade.isEnabled = game.canUpgrade()
+        if let event = game.nextTurn() {
+            let alertController = UIAlertController(title: event.title, message: event.description, preferredStyle: .alert)
+            
+            alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+            if event.actions.count == 0 {
+               addUIAction(alertController: alertController, title: "Ok", action: nil)
+            }
+            for action in event.actions {
+                 addUIAction(alertController: alertController, title: action.description, action: action)
+            }
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            updateResources()
+            btnUpgrade.isEnabled = game.canUpgrade()
+        }
+       
     }
-    
+    func addUIAction(alertController : UIAlertController, title : String, action : EventAction?) {
+        let uiAction = UIAlertAction(title: title, style: .default) { (uiAction:UIAlertAction) in
+            if let action = action {
+                action.executeAction(game: self.game)
+            }
+            uiAction.tintco
+            self.updateResources()
+            self.btnUpgrade.isEnabled = self.game.canUpgrade()
+        }
+        alertController.addAction(uiAction)
+    }
     @IBAction func savePressed(_ sender: Any) {
         do {
             try SaveGameRepository().saveData(element: game)

@@ -18,18 +18,19 @@ struct EventActionFactory {
             break
         case .loseR:
             amountPerIteration = 2
-            callback = change
+            callback = lose
             break
         case .winR:
             amountPerIteration = 2
-            callback = change
+            callback = win
             break
         }
      
         let sequence = stride(from: 0, to: values.count, by: amountPerIteration)
      
-        
+        print("Event doing")
         for i in sequence {
+            print(i)
             callback(game, Array(values[i..<i+amountPerIteration]))
         }
     }
@@ -37,7 +38,8 @@ struct EventActionFactory {
         
     }
     private static func lose(game : Game, valuesSub : [String]) {
-        let resourceType = ResourceType(rawValue: valuesSub[0])!
+        let resourceType = ResourceType(rawValue: valuesSub[0].lowercased())!
+        print(valuesSub)
         switch(resourceType) {
         case .wood:
             game.resources.wood -= Int(valuesSub[1])!
@@ -52,7 +54,7 @@ struct EventActionFactory {
     }
     }
     private static func win(game : Game, valuesSub : [String]) {
-        let resourceType = ResourceType(rawValue: valuesSub[0])!
+        let resourceType = ResourceType(rawValue: valuesSub[0].lowercased())!
         switch(resourceType) {
         case .wood:
             game.resources.wood += Int(valuesSub[1])!

@@ -12,7 +12,7 @@ class MapSet : Named {
     var map : [[TileType]]
     var undiscoveredEvents = [Int : Event]()
     var possibleEvents = [Event]()
-    var discoveredEvents = [Int : Event]()
+    var completedEvents = [Event]()
     var tileDictionary = TileDictionary.instance.tileDictionary
     
     var resourcesPerTurn : ResourceCollection {
@@ -63,6 +63,9 @@ class MapSet : Named {
     private enum CodingKeys: String, CodingKey {
         case map
         case name
+        case undiscoveredEvents
+        case possibleEvents
+        case completedEvents
     }
     init(name : String) {
         map =
@@ -72,6 +75,7 @@ class MapSet : Named {
              [.land,.land,.land,.land,.land,.water],
              [.land,.land,.land,.land,.water,.water]
             ]
+        possibleEvents.append(Event(eventId: 1, isType: .winR, using: ["W", "500"], titled: "Test event", description: "Test scription", isFollowedBy: [2,3], hasActions: [EventAction(description: "Lose Gold", ofType: .loseR, withValues: ["G","1000"]),EventAction(description: "Lose Stone", ofType: .loseR, withValues: ["S","1000"])]))
         self.name = name
     }
    
@@ -88,5 +92,19 @@ class MapSet : Named {
            map[selectedTile.0][selectedTile.1] = upgrade
         }
         return ((selectedTile!), map[selectedTile!.0][selectedTile!.1])
+    }
+    
+    func nextEvent() -> Event? {
+        if let event = possibleEvents.randomElement() {
+            for eventId in event.successorsIds {
+                if let successorEvent = undiscoveredEvents.removeValue(forKey: eventId) {
+                    possibleEvents.append(successorEvent)
+                }
+            }
+            possibleEvents = possibleEvents.filter {$0 !== event}
+            completedEvents.append(event)
+            return event
+        }
+        return nil
     }
 }

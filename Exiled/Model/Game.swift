@@ -36,15 +36,20 @@ class Game : Named{
         }
         return false
     }
-    func nextTurn() {
+    func nextTurn() -> Event? {
         resources = resources + resourcesPerTurn
+        if let event = mapSet.nextEvent() {
+            print("Event done")
+            event.executeEvent(game: self)
+            return event
+        }
+        return nil
         
     }
     func upgradeSelectedBuilding() -> ((Int, Int), TileType){
         self.resources = resources - (mapSet.selectedTileUpgrade! as! Building).resourceCost
         return mapSet.upgradeSelectedTile()
     }
-    
    
 }
 
