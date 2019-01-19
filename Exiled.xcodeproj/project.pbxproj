@@ -15,6 +15,7 @@
 		665CC3B221F25A3D003E8650 /* EventAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3B121F25A3D003E8650 /* EventAction.swift */; };
 		665CC3B421F25BD0003E8650 /* EventActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3B321F25BD0003E8650 /* EventActionType.swift */; };
 		665CC3B621F25C76003E8650 /* EventActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665CC3B521F25C76003E8650 /* EventActionFactory.swift */; };
+		6697389421F376EA00B29348 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697389321F376EA00B29348 /* CustomAlertViewController.swift */; };
 		66982C5421E781E7006A88AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5321E781E7006A88AA /* Assets.xcassets */; };
 		66982C5721E781E7006A88AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66982C5521E781E7006A88AA /* LaunchScreen.storyboard */; };
 		66982C6621E78565006A88AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C5F21E78564006A88AA /* GameScene.swift */; };
@@ -48,6 +49,7 @@
 		665CC3B121F25A3D003E8650 /* EventAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAction.swift; sourceTree = "<group>"; };
 		665CC3B321F25BD0003E8650 /* EventActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionType.swift; sourceTree = "<group>"; };
 		665CC3B521F25C76003E8650 /* EventActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionFactory.swift; sourceTree = "<group>"; };
+		6697389321F376EA00B29348 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		66982C4321E781E5006A88AA /* Exiled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exiled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66982C5321E781E7006A88AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66982C5621E781E7006A88AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				66982C7121E7864E006A88AA /* CustomScrollVIew.swift */,
 				66982C6D21E78580006A88AA /* MyTileSet.sks */,
 				665CC3AB21F23113003E8650 /* MapSetTableView.swift */,
+				6697389321F376EA00B29348 /* CustomAlertViewController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				66982C7D21E78C19006A88AA /* TileDictionary.swift in Sources */,
 				66982C8321E78F69006A88AA /* Event.swift in Sources */,
 				66982C8921E7942F006A88AA /* TileType.swift in Sources */,
+				6697389421F376EA00B29348 /* CustomAlertViewController.swift in Sources */,
 				66982C7221E7864E006A88AA /* CustomScrollVIew.swift in Sources */,
 				665CC3B021F23951003E8650 /* GenericRepository.swift in Sources */,
 				66CF068B21ECE4F30088B495 /* ResourceCollection.swift in Sources */,

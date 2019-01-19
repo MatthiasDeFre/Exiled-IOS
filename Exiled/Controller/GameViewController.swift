@@ -136,19 +136,15 @@ class GameViewController: UIViewController {
     }
     @IBAction func nextTurnPressed(_ sender: Any) {
         if let event = game.nextTurn() {
-            let alertController = UIAlertController(title: event.title, message: event.description, preferredStyle: .alert)
+            let alertController = CustomAlertViewController(title: event.title, message: event.description, preferredStyle: .alert)
             
-            alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(patternImage: UIImage(named: "background")!).withAlphaComponent(0.75)
-             alertController.view.subviews.first?.subviews.first?.subviews.first?.isOpaque = true
-           
             if event.actions.count == 0 {
                addUIAction(alertController: alertController, title: "Ok", action: nil)
             }
             for action in event.actions {
                  addUIAction(alertController: alertController, title: action.description, action: action)
             }
-            let actionView = alertController.view.subviews.first?.subviews.first?.subviews.first?.subviews.last
-            actionView?.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
+           
             
             self.present(alertController, animated: true, completion: nil)
         } else {

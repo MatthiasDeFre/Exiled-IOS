@@ -24,6 +24,14 @@ class NewGameTableViewController: UITableViewController {
         mapSets.register(UITableViewCell.self, forCellReuseIdentifier: "mapSet")
     }
     override func viewWillAppear(_ animated: Bool) {
+        if(!MapSetRepository().directoryExists) {
+            do {
+                try MapSetRepository().createDirectory()
+                try MapSetRepository().createDefaultMapSets() 
+            } catch {
+                print(error)
+            }
+        }
         mapSetTableView.mapSets = MapSetRepository().savedData
         print(mapSetsArray)
     }
@@ -35,7 +43,15 @@ class NewGameTableViewController: UITableViewController {
         }
     }
     // MARK: - Table view data source
-   
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if txtGameName.text!.isEmpty || mapSets.indexPathForSelectedRow == nil {
+              let alertController = CustomAlertViewController(title: "Cannot Start Game", message: "You haven't entered a name or selected a mapset for your game", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedMapSet = mapSetTableView.mapSets[mapSets.indexPathForSelectedRow!.row]
