@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+//Class containing all logic affected by the map
 class MapSet : Named {
     var name : String
     var map : [[TileType]]
@@ -15,6 +17,7 @@ class MapSet : Named {
     var completedEvents = [Event]()
     var tileDictionary = TileDictionary.instance.tileDictionary
     
+    //Calculate the resources per turn
     var resourcesPerTurn : ResourceCollection {
         get {
            
@@ -67,6 +70,8 @@ class MapSet : Named {
         case possibleEvents
         case completedEvents
     }
+    
+    //Standard mapSet constructor => Used to create the default mapSets
     init(name : String) {
         map =
             [[.water,.land,.land,.land,.land,.land],
@@ -80,12 +85,15 @@ class MapSet : Named {
         self.name = name
     }
    
+    //Method to select a tile
     func selectTile(from coordinates : (Int, Int)) -> Tile {
         selectedTile = coordinates
         print(coordinates)
         //Return tile info
         return tileDictionary[map[coordinates.0][coordinates.1]]!
     }
+    
+    //Method to upgrade a selected tile
     func upgradeSelectedTile() -> ((Int, Int), TileType){
         if let selectedTile = selectedTile {
            let tile = tileDictionary[map[selectedTile.0][selectedTile.1]]!
@@ -95,6 +103,7 @@ class MapSet : Named {
         return ((selectedTile!), map[selectedTile!.0][selectedTile!.1])
     }
     
+    //Method to return the next event if there is one, also adding the successors of the current event
     func nextEvent() -> Event? {
         if let event = possibleEvents.randomElement() {
             for eventId in event.successorsIds {

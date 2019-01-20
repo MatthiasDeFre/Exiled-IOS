@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Custom alertviewController class used to set UI elements to custom backgrounds and fonts
 class CustomAlertViewController: UIAlertController {
 
     override func viewDidLoad() {

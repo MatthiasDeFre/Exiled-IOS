@@ -9,8 +9,10 @@
 import SpriteKit
 import GameplayKit
 
+//Spritekit scene class that contains all the visual map logic
 class GameScene: SKScene {
     
+    //If a tile has been clicked this method will be called
     var clickCall : ((Int, Int) -> ())!
     var scrollView: SwiftySKScrollView!
     var entities = [GKEntity]()
@@ -50,6 +52,7 @@ class GameScene: SKScene {
        
     }
     
+    //Prepare the scene by setting the camera and adding the needed gestures
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         cam = SKCameraNode();
@@ -77,6 +80,7 @@ class GameScene: SKScene {
         }
     }
  
+    //Tap gesture => select a tile
     @IBAction func handleTapFrom(recognizer: UITapGestureRecognizer) {
        
         if recognizer.state != .ended {
@@ -118,6 +122,8 @@ class GameScene: SKScene {
       
         
     }
+    
+    //Pinch gesture => Zoom in or out
     @IBAction func handlePinchFrom(recognizer: UIPinchGestureRecognizer? = nil) {
         guard let gesture = recognizer else {
             return
@@ -187,10 +193,13 @@ class GameScene: SKScene {
        // testLabel.position = CGPoint(x: -screenWidth, y: screenHeight)
         
     }
+    
+    //Method to set the clickCallback, used in viewcontrollers
     func setClickCallback(test : @escaping test) {
         clickCall = test
     }
     
+    //Set the tileMap
     func setMap(tiles : [[TileType]]) {
         guard var map = childNode(withName: "testB") as? SKTileMapNode else {
             fatalError("Background node not loaded")
@@ -211,6 +220,8 @@ class GameScene: SKScene {
           
         }
     }
+    
+    //Change a single tile used when upgrading
     func changeTile(coordinates : (Int, Int), tileType : TileType) {
         guard var map = childNode(withName: "testB") as? SKTileMapNode else {
             fatalError("Background node not loaded")

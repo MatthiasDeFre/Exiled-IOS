@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//Repository implementation for the SaveGame class
 class SaveGameRepository : GenericRepository<Game>  {
     
     override init() {

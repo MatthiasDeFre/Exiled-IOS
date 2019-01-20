@@ -9,13 +9,17 @@
 import Foundation
 //Wood, Stone, Gold
 
+//Class housing all domain logic for the game
 class Game : Named{
     var name : String
     var mapSet : MapSet
     var resources : ResourceCollection
+    
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn
     }
+    
+    //Return gamestatus
     var gameStatus : GameStatus {
         get {
             if resources <= -1000 {
@@ -37,6 +41,7 @@ class Game : Named{
         resources = ResourceCollection(wood: 1000,stone: 1000,gold: 1000)
     }
    
+    //Is the selectedTile upgradable
     func canUpgrade() -> Bool {
         let upgrade = mapSet.selectedTileUpgrade
         if let upgrade = upgrade {
@@ -46,6 +51,8 @@ class Game : Named{
         }
         return false
     }
+    
+    //Go to the next turn and return the event if there is one
     func nextTurn() -> Event? {
         resources = resources + resourcesPerTurn
         if let event = mapSet.nextEvent() {
@@ -56,6 +63,8 @@ class Game : Named{
         return nil
         
     }
+    
+    //Upgrade the selected building
     func upgradeSelectedBuilding() -> ((Int, Int), TileType){
         self.resources = resources - (mapSet.selectedTileUpgrade! as! Building).resourceCost
         return mapSet.upgradeSelectedTile()

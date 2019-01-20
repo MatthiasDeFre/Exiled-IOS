@@ -9,8 +9,11 @@
 import UIKit
 
 class SaveGameTableViewController: UITableViewController {
-
+    
+    //Array of Strings containing the names of all the savedgames
     var saveGames = [String]()
+    
+    //Action which will append the savegame name when returning to this screen
     @IBAction func unwindToSaveGames(unwindSegue: UIStoryboardSegue) {
         print("unwind")
         if let gameViewController = unwindSegue.source as? GameViewController {
@@ -24,6 +27,7 @@ class SaveGameTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
+        //Try to create the directory if it doesn't exists else return
         if(!SaveGameRepository().directoryExists) {
             guard let _ = try? SaveGameRepository().createDirectory() else {
                 return
@@ -57,8 +61,11 @@ class SaveGameTableViewController: UITableViewController {
 
         return cell
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+            
+        //Load data if the destion is loadGame
         case "loadGame":
           
             do {
@@ -97,6 +104,7 @@ class SaveGameTableViewController: UITableViewController {
             return .delete
     }
     
+    //Tableview method to remove a row
     override func tableView(_ tableView: UITableView, commit
         editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
         IndexPath) {

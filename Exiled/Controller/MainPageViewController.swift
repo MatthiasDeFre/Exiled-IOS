@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Change UI element of navigation view
 class MainPageViewController: UIViewController {
 
     override func viewDidLoad() {

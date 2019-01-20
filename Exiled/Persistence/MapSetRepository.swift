@@ -7,8 +7,11 @@
 //
 
 import Foundation
+
+//Repository implementation for the MapSet class
 class MapSetRepository : GenericRepository<MapSet> {
    
+    //URL Used for retrieving data of backend
     let baseURL = URL(string: "http://localhost:3000/games/")
     
     override init() {
@@ -16,6 +19,7 @@ class MapSetRepository : GenericRepository<MapSet> {
         mainDirectory = "mapsets"
     }
    
+    //Method to create standard mapsets incase the use wouldn't have any internet or accidently deleted his standard mapsets
     func createDefaultMapSets() throws{
         let mapSet1 = MapSet(name: "FirstMap")
         let mapSet2 = MapSet(name: "SecondMap")
@@ -29,9 +33,11 @@ class MapSetRepository : GenericRepository<MapSet> {
         try saveData(element: mapSet3)
     }
     
+    /*Method to retrieve all mapset names from the backend
+      These names can be used to retrieve a single map from the backend
+    */
     func fetchMapSetNames(completion: @escaping ([String]?)-> Void) {
       
-        
         let task = URLSession.shared.dataTask(with: baseURL!) { (data,
             response, error) in
             let jsonDecoder = JSONDecoder()
@@ -47,6 +53,7 @@ class MapSetRepository : GenericRepository<MapSet> {
         task.resume()
         
     }
+    //Method to get a single map from the backend
     func fetchSingleMap(completion: @escaping (String?)-> Void, name: String) {
         
         let url = baseURL?.appendingPathComponent(name)

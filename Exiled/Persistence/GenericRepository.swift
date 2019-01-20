@@ -7,13 +7,20 @@
 //
 
 import Foundation
+//Generic implementation for any class implementing the Named protocol
 class GenericRepository<Element : Named> {
+    
+    //String to determine where the objects should be saved to
     var mainDirectory : String!
+    
+    //URL used to determine the complete path where the objects should be saved to
     var mainURL : URL {
         get {
             return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(mainDirectory, isDirectory: true)
         }
     }
+    
+    //Array of Strings containing all the saved objects of the given type in the given directory
     var savedData : [String] {
         get {
             var saved = [String]()
@@ -22,13 +29,15 @@ class GenericRepository<Element : Named> {
                 for var file in files {
                     print(file.lastPathComponent)
                     file.deletePathExtension()
-                    saved.append(file.lastPathComponent)
+                    let fileWithSpace = file.lastPathComponent.replacingOccurrences(of: "-", with: " ")
+                    saved.append(fileWithSpace)
                 }
             }
             return saved
         }
     }
     
+    //Method to check if directory exists
     var directoryExists : Bool {
         get {
             return FileManager.default.fileExists(atPath: mainURL.path)
@@ -36,14 +45,18 @@ class GenericRepository<Element : Named> {
     }
     
     
-    
+    /*Method to create the directory
+     This method will still work even if the given directory already exists
+    */
     func createDirectory() throws {
         try FileManager.default.createDirectory(at: mainURL, withIntermediateDirectories: true, attributes: nil)
     }
     
+    //Method to load the data in the given directory with the given name
     func loadData(named name : String) throws -> Element{
         print("name: ", name)
-        let loadURL = mainURL.appendingPathComponent(name).appendingPathExtension("json")
+        let fileName = name.replacingOccurrences(of: " ", with: "-")
+        let loadURL = mainURL.appendingPathComponent(fileName).appendingPathExtension("json")
         print(loadURL)
         if let loadedData = try? Data(contentsOf: loadURL), let loadedObject = try? JSONDecoder().decode(Element.self, from: loadedData) {
             return loadedObject
@@ -51,16 +64,21 @@ class GenericRepository<Element : Named> {
         
         throw LoadDataError.runtimeError("Error loading data")
     }
+    
+     //Method to save the data into the given directory
     func saveData(element : Element) throws{
         let jsonEncoder = JSONEncoder.init()
         let jsonData = try jsonEncoder.encode(element)
         let jsonString = String(data: jsonData, encoding: .utf8)
         let fileName = element.name.replacingOccurrences(of: " ", with: "-")
+        print("Filename", fileName)
         let savedURL = mainURL.appendingPathComponent(fileName)
             .appendingPathExtension("json")
         print("JSON String : " + jsonString!)
         try jsonString?.write(to: savedURL, atomically: true, encoding: .utf8)
     }
+    
+    //Method to remove the data from the given directory with the given name
     func removeData(named name: String) throws {
         print("Name: ", name)
         try FileManager.default.removeItem(at:
@@ -68,9 +86,11 @@ class GenericRepository<Element : Named> {
                 .appendingPathExtension("json"))
     }
 }
+//In case of error => throw this
 enum LoadDataError: Error {
     case runtimeError(String)
 }
+//Protocol used by the generic repository to save 
 protocol Named : Codable {
     var name : String { get }
 }

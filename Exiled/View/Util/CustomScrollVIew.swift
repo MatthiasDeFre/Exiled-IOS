@@ -27,6 +27,7 @@ import SpriteKit
  
  A custom subclass of UIScrollView to add to your SpriteKit scenes.
  */
+//NOT USED ATM
 public class SwiftySKScrollView: UIScrollView {
     
     // MARK: - Properties

@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+//Class containing all of the main game logic
 class GameViewController: UIViewController {
 
     var game : Game!
@@ -34,6 +35,7 @@ class GameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
+            //Return back to savegames screen
         case "unwindToSaveGames":
             let viewController = self.navigationController!.viewControllers.filter{$0.isKind(of: SaveGameTableViewController.self)}.first!
             self.navigationController?.popToViewController(viewController, animated: true)
@@ -43,6 +45,10 @@ class GameViewController: UIViewController {
             fatalError("unknown segue")
         }
     }
+    /*
+     Update resources
+     Update gameScene with the game map
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         updateResources()
@@ -86,7 +92,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    
+    //Auto scale the screen when rotating
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gScene.rotate()
     }
@@ -106,14 +112,18 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    //Method to select a tile and update the selected tile info
     func selectTile(rowIndex : Int, colIndex : Int){
         let tile = game.mapSet.selectTile(from: (rowIndex, colIndex))
         let canUpgrade = game.canUpgrade()
         updateSelectedInfo(tile: tile, isUpgradeable: canUpgrade)
     }
     
+    //Method to update the selectedTile info with the given tile
     func updateSelectedInfo(tile : Tile, isUpgradeable : Bool ) {
       
+        //If the tile is upgradeable = Set text to update description ELSE set text to tile description
         if let upgrade = tile.upgrade {
             upgradeDescription.text = TileDictionary.instance.tileDictionary[upgrade]?.description
         } else {
@@ -122,6 +132,7 @@ class GameViewController: UIViewController {
         btnUpgrade.isEnabled = isUpgradeable
     }
     
+    //Method to update the current resources and resources per turn
     func updateResources() {
         let perTurn = game.resourcesPerTurn
         let current = game.resources
@@ -129,13 +140,18 @@ class GameViewController: UIViewController {
           stone.text = "\(current.stone)+\(perTurn.stone)"
           gold.text = "\(current.gold)+\(perTurn.gold)"
     }
+    
+    //Action to upgrade a tile
     @IBAction func upgradePressed(_ sender: Any) {
         let upgradeInfo = game.upgradeSelectedBuilding()
         gScene.changeTile(coordinates: upgradeInfo.0, tileType: upgradeInfo.1)
         updateResources()
         btnUpgrade.isEnabled = game.canUpgrade()
     }
+    //Action to check if the game has ended and if not go to the next turn
     @IBAction func nextTurnPressed(_ sender: Any) {
+        
+        //If game has ended show an alert to go back to the savedgames screen
         switch game.gameStatus {
         case .lost:
             backToSaveGames(title: "Lost", message: "You have lost and your kingdom lies in ruin...")
@@ -144,6 +160,7 @@ class GameViewController: UIViewController {
              backToSaveGames(title: "Won", message: "You braved yourself against the dangers of this world and made sure your kingdom will live another day!")
             break
         case .normal:
+            //Go to the next turn and show alert containing event description and possible actions
         if let event = game.nextTurn() {
             let alertController = CustomAlertViewController(title: event.title, message: event.description, preferredStyle: .alert)
             
@@ -166,6 +183,8 @@ class GameViewController: UIViewController {
         }
        
     }
+    //Method to add an UIAction to the given alertController
+    //If the Action is not nill this action will also execute action.executeAction(...)
     func addUIAction(alertController : UIAlertController, title : String, action : EventAction?) {
         let uiAction = UIAlertAction(title: title, style: .default) { (uiAction:UIAlertAction) in
             if let action = action {
@@ -177,6 +196,8 @@ class GameViewController: UIViewController {
         }
         alertController.addAction(uiAction)
     }
+    
+    //Action to save the game
     @IBAction func savePressed(_ sender: Any) {
         do {
             try SaveGameRepository().saveData(element: game)
@@ -185,6 +206,8 @@ class GameViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    
+    //Method that will show an alert in case the game has ended, this alert will have 1 action to go back to the savesgames screen
     func backToSaveGames(title: String, message : String) {
         let alertController = CustomAlertViewController(title: title, message: message, preferredStyle: .alert)
         let uiAction = UIAlertAction(title: "Back To Savegames", style: .default) { (uiAction:UIAlertAction) in
@@ -194,15 +217,4 @@ class GameViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
-extension UIView {
-    func roundedCorners(top: Bool){
-        let corners:UIRectCorner = (top ? [.topLeft , .topRight] : [.bottomRight , .bottomLeft])
-        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
-                                     byRoundingCorners: corners,
-                                     cornerRadii:CGSize(width:8.0, height:8.0))
-        let maskLayer1 = CAShapeLayer()
-        maskLayer1.frame = self.bounds
-        maskLayer1.path = maskPAth1.cgPath
-        self.layer.mask = maskLayer1
-    }
-}
+

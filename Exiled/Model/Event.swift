@@ -7,6 +7,8 @@
 //
 
 import Foundation
+//Struct containing the event logic
+//An event can have actions these actions are options the player can choose to affect his game
 struct Event : Codable, Equatable {
     let id : Int
     let type : EventActionType
@@ -26,9 +28,12 @@ struct Event : Codable, Equatable {
         self.actions = actions
     }
     
+    //Get the action from the factory which will execute it
     func executeEvent(game : Game) {
         EventActionFactory.createAction(game: game, values: values, type: type)
     }
+    
+    //Operator functions
     static func !== (event1 : Event, event2 : Event) -> Bool{
         return event1.id != event2.id
     }

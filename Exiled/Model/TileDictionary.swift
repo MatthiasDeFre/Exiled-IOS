@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+//Singleton struct containing all tile definitions
 struct TileDictionary {
     static let instance = TileDictionary()
     let tileDictionary : [TileType: Tile]

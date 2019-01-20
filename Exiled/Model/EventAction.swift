@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//Struct containing the logic of an actionChoice of an event
 struct EventAction : Codable {
     let description : String
     let value : [String]

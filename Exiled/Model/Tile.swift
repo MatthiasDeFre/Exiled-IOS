@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//Class containing the definition of a tile
 class Tile {
     var description : String
     var tileType : TileType

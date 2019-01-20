@@ -10,7 +10,10 @@ import UIKit
 
 class NewGameTableViewController: UITableViewController {
     
+    //Array containing all of the downloaded mapset names
     var mapSetsArray : [String]!
+    
+    //Tableview delegate class who will handle the mapSets tableview actions
      let mapSetTableView = MapSetTableView();
     @IBOutlet weak var mapSets: UITableView!
     @IBOutlet weak var txtGameName: UITextField!
@@ -22,12 +25,14 @@ class NewGameTableViewController: UITableViewController {
         mapSets.delegate = mapSetTableView
         mapSets.dataSource = mapSetTableView
         mapSets.register(UITableViewCell.self, forCellReuseIdentifier: "mapSet")
+        
         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         mapSets.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
        txtGameName.backgroundColor = UIColor(patternImage: UIImage(named: "inputfield")!)
         txtGameName.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
     }
     override func viewWillAppear(_ animated: Bool) {
+        //Create directory if it doesnt exists yet
         if(!MapSetRepository().directoryExists) {
             do {
                 try MapSetRepository().createDirectory()
@@ -83,7 +88,7 @@ class NewGameTableViewController: UITableViewController {
         
     }
     
-    // MARK: - Table view data source
+    //Only perform the seque if the txtField is filled in and a mapset has been selected
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if txtGameName.text!.isEmpty || mapSets.indexPathForSelectedRow == nil {
               let alertController = CustomAlertViewController(title: "Cannot Start Game", message: "You haven't entered a name or selected a mapset for your game", preferredStyle: .alert)
@@ -94,6 +99,7 @@ class NewGameTableViewController: UITableViewController {
         return true
     }
    
+    //Load the mapset and put it into the game instance
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("SEQUE NEW GAME")
         let selectedMapSet = mapSetTableView.mapSets[mapSets.indexPathForSelectedRow!.row]
@@ -103,19 +109,10 @@ class NewGameTableViewController: UITableViewController {
         }
         let game = Game(isCalled: txtGameName.text!, mapSet: loadedMapSet)
         let gameViewController = segue.destination as! GameViewController
-        let jsonEncoder = JSONEncoder()
+        
         do {
             
-            let jsonData = try jsonEncoder.encode(game)
-            let jsonString = String(data: jsonData, encoding: .utf8)
-            print("JSON String : " + jsonString!)
-            let documentsDirectory =
-                FileManager.default.urls(for: .documentDirectory,
-                                         in: .userDomainMask).first!
-            let archiveURL =
-                documentsDirectory.appendingPathComponent("savegames", isDirectory: true).appendingPathComponent(game.name)
-                    .appendingPathExtension("json")
-            try jsonString?.write(to: archiveURL, atomically: true, encoding: .utf8)
+          try SaveGameRepository().saveData(element: game)
         }
         catch {
             print(error.localizedDescription)

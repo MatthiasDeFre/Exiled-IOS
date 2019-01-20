@@ -10,12 +10,21 @@ import UIKit
 
 class MapSetTableViewController: UITableViewController {
 
+    /*
+     Array containing a String, Bool tuple
+     String => Name of MapSet
+     Bool => True if the file has been downloaded, False if the file has not been downloaded
+    */
     var mapSets = [(String, Bool)]()
+    
+    //MapSetRepository instance
     let mapSetRepo = MapSetRepository()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Check if the directory exists and create it if it doesn't
         if(!mapSetRepo.directoryExists) {
             do {
                 try mapSetRepo.createDirectory()
@@ -23,8 +32,11 @@ class MapSetTableViewController: UITableViewController {
                 print(error)
             }
         }
+        //Try to create the default mapsets
         try! mapSetRepo.createDefaultMapSets()
-         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
+        //Add all the saved maps to the tableview
         for map in mapSetRepo.savedData {
              mapSets.append((map,true))
         }
@@ -32,13 +44,16 @@ class MapSetTableViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        //Fetch all the mapset names from the backend and update the table
         mapSetRepo.fetchMapSetNames { (mapSetNames) in
             self.updateTable(with: mapSetNames)
         }
     }
 
+    
+    //Tableview Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+      
         return mapSets.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,13 +77,15 @@ class MapSetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         let header = view as? UITableViewHeaderFooterView
-        
+        //Change header font
         header?.textLabel?.font = UIFont(name: "OptimusPrincepsSemiBold", size: 20)
         header?.textLabel?.textColor = .black
         
     }
+    
+    //If the clicked cell = not downloaded = download the clicked cell and update tableview
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(mapSets[indexPath.row])
+       
         if mapSets[indexPath.row].1 == false {
             mapSetRepo.fetchSingleMap(completion: { (mapSetName) in
                 self.updateSingleCell(with: mapSetName)
@@ -77,6 +94,7 @@ class MapSetTableViewController: UITableViewController {
     
     }
     
+    //Only allowed downloaded cells to be deleted
     override func tableView(_ tableView: UITableView,
                             editingStyleForRowAt indexPath: IndexPath) ->
         UITableViewCell.EditingStyle {
@@ -86,6 +104,7 @@ class MapSetTableViewController: UITableViewController {
             return .none
     }
     
+    //Delete file from directory and set status to not downloaded
     override func tableView(_ tableView: UITableView, commit
         editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
         IndexPath) {
@@ -102,6 +121,7 @@ class MapSetTableViewController: UITableViewController {
         }
     }
     
+    //Update table with the given names
     func updateTable(with mapSetNames : [String]?) {
         if let mapSetNames = mapSetNames {
             for map in mapSetNames {
@@ -115,6 +135,8 @@ class MapSetTableViewController: UITableViewController {
            
         }
     }
+    
+    //Update a single cell if the mapset name is not nil
     func updateSingleCell(with mapSetName : String?) {
         guard let mapSetName = mapSetName else {
             return

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Class respresenting a building
 class Building : Tile {
     var resourceType : ResourceType
     var value : Int

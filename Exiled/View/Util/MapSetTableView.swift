@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+
+//Custom tableview datasource and delegate class which will handle all tableview actions
 class MapSetTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
     var mapSets = [String]()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

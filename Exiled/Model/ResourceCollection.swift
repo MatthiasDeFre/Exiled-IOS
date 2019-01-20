@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//Struct housing the resources
 struct ResourceCollection : Codable{
     var wood = 0
     var gold = 0
@@ -27,6 +28,7 @@ struct ResourceCollection : Codable{
         self.stone = stone
     }
 }
+//Operator functions
 extension ResourceCollection {
     static func + (left: ResourceCollection, right: ResourceCollection) -> (ResourceCollection) {
         return ResourceCollection(wood: left.wood + right.wood, stone: left.stone+right.stone, gold: left.gold + right.gold)
