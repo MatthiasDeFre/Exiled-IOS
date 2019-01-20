@@ -16,3 +16,7 @@ To run this application you can clone this repository and open the project in XC
 To provide additional maps to the game you can clone and use the backend add the following repository: [Backend Repository](https://github.com/MatthiasDeFre/Exiled-Backend)
 You can read the README.me over at the repository for more information how to add custom maps.
 
+## Credits
+
+Graphics provided by: [Kenny](https://www.kenney.nl) 
+
