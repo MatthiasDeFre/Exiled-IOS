@@ -24,7 +24,7 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
 
     override func sceneDidLoad() {
-
+       
         self.lastUpdateTime = 0
       
         // Get label node from scene and store it for use later
@@ -62,6 +62,10 @@ class GameScene: SKScene {
         self.camera?.addChild(testLabel)
         self.addChild(cam!);
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapFrom(recognizer:)))
+        let pinchReq = UIPinchGestureRecognizer(target: self, action: #selector(self.handlePinchFrom(recognizer:)))
+        let panReq = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanFrom(_:)))
+        view.addGestureRecognizer(pinchReq)
+        view.addGestureRecognizer(panReq)
         tapGestureRecognizer.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -69,52 +73,92 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         if let location = touches.first?.location(in: self) {
-            guard let map = childNode(withName: "testB") as? SKTileMapNode else {
-                fatalError("Background node not loaded")
-            }
-            print("loc ",location)
-            let column = map.tileColumnIndex(fromPosition: location)
-            let row = map.tileRowIndex(fromPosition: location)
-            guard column >= 0, row >= 0, column < map.numberOfColumns, row < map.numberOfRows else{
-                return
-            }
-            if let selectionBox = selectionBox {
-               selectionBox.removeFromParent()
-            }
-          
-            selectionBox = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
-            let rect = CGRect(x: 0.0, y: 0.0, width: 128, height: 128)
-            
-            let path = roundedPolygonPath(rect: rect, lineWidth: 0, sides: 6, cornerRadius: 0, rotationOffset: CGFloat(Double.pi / 2.0))
-            selectionBox = SKShapeNode(path: path.cgPath)
-           var point =  map.centerOfTile(atColumn: column, row: row)
-            point.x = point.x - 55
-            point.y = point.y - 55
-            
-            selectionBox!.position = point
-            selectionBox!.strokeColor = .black
            
-            map.addChild(selectionBox!)
-            
-            print(column, " r", row)
-            centerNode?.run(SKAction.move(to: location, duration: 1))
-            clickCall(row, column)
         }
     }
  
     @IBAction func handleTapFrom(recognizer: UITapGestureRecognizer) {
-
+       
         if recognizer.state != .ended {
             return
         }
         
         let recognizorLocation = recognizer.location(in: recognizer.view!)
         let location = self.convertPoint(fromView: recognizorLocation)
+        guard let map = childNode(withName: "testB") as? SKTileMapNode else {
+            fatalError("Background node not loaded")
+        }
+        print("loc ",location)
+        let column = map.tileColumnIndex(fromPosition: location)
+        let row = map.tileRowIndex(fromPosition: location)
+        guard column >= 0, row >= 0, column < map.numberOfColumns, row < map.numberOfRows else{
+            return
+        }
+        if let selectionBox = selectionBox {
+            selectionBox.removeFromParent()
+        }
         
+        selectionBox = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+        let rect = CGRect(x: 0.0, y: 0.0, width: 128, height: 128)
+        
+        let path = roundedPolygonPath(rect: rect, lineWidth: 0, sides: 6, cornerRadius: 0, rotationOffset: CGFloat(Double.pi / 2.0))
+        selectionBox = SKShapeNode(path: path.cgPath)
+        var point =  map.centerOfTile(atColumn: column, row: row)
+        point.x = point.x - 55
+        point.y = point.y - 55
+        
+        selectionBox!.position = point
+        selectionBox!.strokeColor = .black
+        
+        map.addChild(selectionBox!)
+        
+        print(column, " r", row)
+        //centerNode?.run(SKAction.move(to: location, duration: 1))
+        clickCall(row, column)
       
         
     }
-    
+    @IBAction func handlePinchFrom(recognizer: UIPinchGestureRecognizer? = nil) {
+        guard let gesture = recognizer else {
+            return
+        }
+        if (gesture.state == .began || gesture.state == .changed) && gesture.scale > 0.20 && gesture.scale < 2 {
+            print(gesture.scale)
+            self.camera?.setScale(gesture.scale)
+        }
+    }
+   var previousCameraPoint = CGPoint.zero
+    @IBAction func handlePanFrom(_ sender: UIPanGestureRecognizer) {
+        
+        // The camera has a weak reference, so test it
+        guard let camera = self.centerNode else {
+            return
+        }
+        
+        // If the movement just began, save the first camera position
+        if sender.state == .began {
+            previousCameraPoint = camera.position
+        }
+        // Perform the translation
+       
+        let translation = sender.translation(in: self.view)
+        
+        let newPosition = CGPoint(
+            x: previousCameraPoint.x + translation.x * -1,
+            y: previousCameraPoint.y + translation.y
+        )
+        guard let map = childNode(withName: "testB") as? SKTileMapNode else {
+            fatalError("Background node not loaded")
+        }
+        
+        let column = map.tileColumnIndex(fromPosition: newPosition)
+        let row = map.tileRowIndex(fromPosition: newPosition)
+        guard column >= 0, row >= 0, column < map.numberOfColumns, row < map.numberOfRows else{
+            return
+        }
+        print("Col", column, "Row", row)
+        camera.position = newPosition
+    }
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         super.update(currentTime)
