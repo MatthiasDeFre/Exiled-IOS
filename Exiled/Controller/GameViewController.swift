@@ -136,6 +136,14 @@ class GameViewController: UIViewController {
         btnUpgrade.isEnabled = game.canUpgrade()
     }
     @IBAction func nextTurnPressed(_ sender: Any) {
+        switch game.gameStatus {
+        case .lost:
+            backToSaveGames(title: "Lost", message: "You have lost and your kingdom lies in ruin...")
+            break
+        case .won:
+             backToSaveGames(title: "Won", message: "You braved yourself against the dangers of this world and made sure your kingdom will live another day!")
+            break
+        case .normal:
         if let event = game.nextTurn() {
             let alertController = CustomAlertViewController(title: event.title, message: event.description, preferredStyle: .alert)
             
@@ -151,6 +159,9 @@ class GameViewController: UIViewController {
         } else {
             updateResources()
             btnUpgrade.isEnabled = game.canUpgrade()
+        }
+            break
+            
         }
        
     }
@@ -172,6 +183,14 @@ class GameViewController: UIViewController {
         catch {
             print(error.localizedDescription)
         }
+    }
+    func backToSaveGames(title: String, message : String) {
+        let alertController = CustomAlertViewController(title: title, message: message, preferredStyle: .alert)
+        let uiAction = UIAlertAction(title: "Back To Savegames", style: .default) { (uiAction:UIAlertAction) in
+            self.performSegue(withIdentifier: "unwindToSaveGames", sender: self)
+        }
+        alertController.addAction(uiAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 extension UIView {

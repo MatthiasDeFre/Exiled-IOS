@@ -16,6 +16,16 @@ class Game : Named{
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn
     }
+    var gameStatus : GameStatus {
+        get {
+            if resources <= -1000 {
+                return .lost
+            } else if mapSet.possibleEvents.isEmpty{
+                return .won
+            }
+            return .normal
+        }
+    }
     private enum CodingKeys: String, CodingKey {
         case name
         case mapSet
@@ -50,7 +60,13 @@ class Game : Named{
         self.resources = resources - (mapSet.selectedTileUpgrade! as! Building).resourceCost
         return mapSet.upgradeSelectedTile()
     }
-   
+    
+    
+}
+enum GameStatus : Int {
+    case normal = 0
+    case won = 1
+    case lost = 2
 }
 
 

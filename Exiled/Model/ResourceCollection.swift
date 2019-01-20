@@ -37,4 +37,8 @@ extension ResourceCollection {
     static func >= (left: ResourceCollection, right: ResourceCollection) -> (Bool) {
         return (left.wood >= right.wood && left.stone >= right.stone && left.gold >= right.gold)
     }
+    static func <= (left: ResourceCollection, right: Int) -> (Bool) {
+        return (left.wood <= right && left.stone <= right && left.gold <= right)
+    }
+
 }
