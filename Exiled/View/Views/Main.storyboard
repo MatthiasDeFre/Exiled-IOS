@@ -153,26 +153,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-TT-Jcw">
-                                <rect key="frame" x="157" y="323" width="65" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-TT-Jcw">
+                                <rect key="frame" x="87.5" y="276.5" width="200" height="51"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="35"/>
+                                <state key="normal" title="Start Game"/>
                                 <connections>
                                     <segue destination="iIT-kb-h3S" kind="show" id="e4x-mG-6Ft"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cz-Wc-9Yn">
-                                <rect key="frame" x="157" y="473" width="65" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="17"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cz-Wc-9Yn">
+                                <rect key="frame" x="78.5" y="352.5" width="218" height="51"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="35"/>
+                                <state key="normal" title="Get Map Sets"/>
                                 <connections>
                                     <segue destination="6HM-Hc-HPC" kind="show" identifier="mapSets" id="dzg-BJ-dnl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exiled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqI-wb-j3e">
+                                <rect key="frame" x="69.5" y="159" width="236" height="87.5"/>
+                                <fontDescription key="fontDescription" name="OptimusPrincepsSemiBold" family="OptimusPrincepsSemiBold" pointSize="80"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tfe-TT-Jcw" firstAttribute="top" secondItem="hqI-wb-j3e" secondAttribute="bottom" constant="30" id="3gz-jn-CrG"/>
+                            <constraint firstItem="tfe-TT-Jcw" firstAttribute="centerX" secondItem="wc6-Z4-mxb" secondAttribute="centerX" id="5M5-vE-a5x"/>
+                            <constraint firstItem="hqI-wb-j3e" firstAttribute="centerX" secondItem="wc6-Z4-mxb" secondAttribute="centerX" id="Xo7-lP-D35"/>
+                            <constraint firstItem="2cz-Wc-9Yn" firstAttribute="top" secondItem="tfe-TT-Jcw" secondAttribute="bottom" constant="25" id="ckn-jc-Adt"/>
+                            <constraint firstItem="2cz-Wc-9Yn" firstAttribute="centerX" secondItem="wc6-Z4-mxb" secondAttribute="centerX" id="k6G-Ig-rBD"/>
+                            <constraint firstItem="hqI-wb-j3e" firstAttribute="top" secondItem="yWE-Vb-Igk" secondAttribute="top" constant="95" id="sYx-jM-eSu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yWE-Vb-Igk"/>
                     </view>
                     <navigationItem key="navigationItem" id="cAG-R9-DxK"/>

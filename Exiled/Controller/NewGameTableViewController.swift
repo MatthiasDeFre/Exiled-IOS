@@ -43,7 +43,11 @@ class NewGameTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  super.tableView(tableView, cellForRowAt: indexPath)
-        cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
+        if indexPath.section == 0 {
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "savegameline")!)
+        } else {
+              cell.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        }
         
         // Configure the cell...
         
