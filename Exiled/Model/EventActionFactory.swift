@@ -35,7 +35,25 @@ struct EventActionFactory {
         }
     }
     private static func change(game : Game, valuesSub : [String]) {
+          let fromType = TileType(rawValue: valuesSub[0].capitalized)!
+          let toType = TileType(rawValue: valuesSub[1].capitalized)!
+          let amountString = valuesSub[2].lowercased()
+        var amount = 0
+        if amountString != "all" {
+            amount = Int(amountString)!
+        }
+        var currentAmount = 1
         
+        print("A",amount)
+        for (i, row) in game.mapSet.map.enumerated() {
+            for (j, col) in row.enumerated() {
+                if((currentAmount <= amount || amountString == "all") && col == fromType) {
+                    game.mapSet.map[i][j] = toType
+                    print("CURRENT",currentAmount)
+                    currentAmount += 1
+                }
+            }
+        }
     }
     private static func lose(game : Game, valuesSub : [String]) {
         let resourceType = ResourceType(rawValue: valuesSub[0].lowercased())!

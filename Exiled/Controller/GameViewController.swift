@@ -158,6 +158,7 @@ class GameViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         } else {
             updateResources()
+            
             btnUpgrade.isEnabled = game.canUpgrade()
         }
             break
@@ -170,7 +171,7 @@ class GameViewController: UIViewController {
             if let action = action {
                 action.executeAction(game: self.game)
             }
-        
+            self.gScene.setMap(tiles: self.game.mapSet.map)
             self.updateResources()
             self.btnUpgrade.isEnabled = self.game.canUpgrade()
         }

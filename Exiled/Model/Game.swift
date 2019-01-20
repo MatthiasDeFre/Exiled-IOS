@@ -11,7 +11,7 @@ import Foundation
 
 class Game : Named{
     var name : String
-    var mapSet : MapSet = MapSet(name: "test")
+    var mapSet : MapSet
     var resources : ResourceCollection
     var resourcesPerTurn : ResourceCollection {
         return mapSet.resourcesPerTurn
