@@ -1,7 +1,7 @@
 # Exiled-IOS
 
 ## Description
-Exiled is a game where you need to survive several turns. 
+Exiled is a simple proof of concept game where you need to survive several turns. 
 Each turn you have the ability to upgrade your kingdom with the gathered resources.
 
 ### Events
@@ -15,6 +15,36 @@ To run this application you can clone this repository and open the project in XC
 ## Backend
 To provide additional maps to the game you can clone and use the backend add the following repository: [Backend Repository](https://github.com/MatthiasDeFre/Exiled-Backend)
 You can read the README.me over at the repository for more information how to add custom maps.
+
+## Screenshots
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r1.png)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r2.png)
+
+### Download different maps from backend
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r3.png)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r4.png)
+
+### Game loop
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r5.png)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r6.png)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r7.png)
+
+Events have choices with different outcomes
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r8.png)
+
+Different tiles have different upgrade options (wood = lumberyard, stone = quarry)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r9.png)
+
+![](https://github.com/MatthiasDeFre/Exiled-IOS/blob/master/img/r10.png)
 
 ## Credits
 
